@@ -173,7 +173,7 @@
                                                     1 => 'Pemohon',
                                                     2 => 'Kaprodi'
                                                 ];
-                                                foreach ($roles as $r => $ra) : ?>
+                                                foreach ($roles as $r) : ?>
                                                     <div class="col-md-2">
                                                         <div class="form-check">
                                                             <input
@@ -183,7 +183,7 @@
                                                                 value="<?= $r; ?>"
                                                                 <?= in_array($r, is_array(set_value('role_access')) ? set_value('role_access') : []) ? 'checked' : ''; ?>>
                                                             <label class="form-check-label" for="role_access<?= $r; ?>">
-                                                                <?= $ra; ?>
+                                                                <?= $r; ?>
                                                             </label>
                                                         </div>
                                                     </div>
