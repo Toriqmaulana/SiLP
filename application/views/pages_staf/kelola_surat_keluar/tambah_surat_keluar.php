@@ -152,11 +152,13 @@
                                             <div class="row">
                                                 <?php foreach ($jenis_surat as $js) : ?>
                                                     <?php if (in_array($js['id'], explode(',', $kelola_sk['jenis_surat']))) : ?>
+                                                        <?php $file_key = 'file_' . strtolower($js['nama_jenis_surat']); ?>
                                                         <div class="col-md-12">
-                                                            <label for="file_<?= strtolower($js['nama_jenis_surat']) ?>">Upload File <?= $js['nama_surat'] ?> (PDF) *</label>
-                                                            <input type="file" class="form-control file-input" name="file_<?= strtolower($js['nama_jenis_surat']) ?>" id="file_<?= strtolower($js['nama_jenis_surat']) ?>" accept=".pdf">
+                                                            <label for="<?= $file_key; ?>">Upload File <?= $js['nama_surat'] ?> (PDF) *</label>
+                                                            <input type="file" class="form-control file-input" name="<?= $file_key; ?>" id="<?= $file_key; ?>" accept=".pdf">
                                                             <small class="text-muted">Max size: 5 MB.</small>
                                                             <div class="file-error text-danger" style="display: none;"></div>
+                                                            <?= form_error($file_key); ?>
                                                         </div>
                                                     <?php endif; ?>
                                                 <?php endforeach ?>

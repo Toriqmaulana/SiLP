@@ -300,9 +300,11 @@ class Pemohon extends CI_Controller
         $this->form_validation->set_rules('tempat_pelaksanaan', 'Tempat pelaksanaan', 'trim|required');
         $this->form_validation->set_rules('tanggal_pelaksanaan', 'Tanggal pelaksanaan', 'required', ['required' => '%s harus dipilih!']);
         $this->form_validation->set_rules('jenis_surat[]', 'Jenis surat', 'required', ['required' => '%s harus dipilih!']);
-        // if (empty($_FILES['berkas_file']['name'][0])) {
-        //     $this->form_validation->set_rules('berkas_file[]', 'Berkas file', 'required', ['required' => '%s harus dipilih!']);
-        // }
+        // Validasi file hanya jika tidak ada file yang sudah ada dan tidak ada file baru yang diupload
+        $existing_files = $this->input->post('existing_files', true);
+        if (empty($existing_files) && empty($_FILES['berkas_file']['name'][0])) {
+            $this->form_validation->set_rules('berkas_file[]', 'Berkas file', 'required', ['required' => '%s harus dipilih!']);
+        }
 
         $this->form_validation->set_message('required', '%s harus diisi!');
 

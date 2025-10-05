@@ -342,7 +342,7 @@ class Staf extends CI_Controller
 
     public function tambahAksiSuratKeluarStaf($id)
     {
-        $this->_rulesAddSurat();
+        $this->_rulesAddSurat($id);
 
         if ($this->form_validation->run() == FALSE) {
             $this->tambahSuratKeluarStaf($id);
@@ -442,8 +442,23 @@ class Staf extends CI_Controller
         $this->form_validation->set_error_delimiters('<div class="text-small text-danger">', '</div>');
     }
 
-    public function _rulesAddSurat()
+    public function _rulesAddSurat($id)
     {
+        $data['kelola_sk'] = $this->kelola_sk_model->readSuratKeluar($id);
+        $data['jenis_surat'] = $this->kelola_jenis_surat_model->getDataJenisSurat();
+
+        // Loop untuk memvalidasi file upload berdasarkan jenis surat
+        foreach ($data['jenis_surat'] as $js) {
+            if (in_array($js['id'], explode(',', $data['kelola_sk']['jenis_surat']))) {
+                // Tentukan file key untuk jenis surat tertentu
+                $file_key = 'file_' . strtolower($js['nama_jenis_surat']);
+
+                if (empty($_FILES[$file_key]['name'])) {
+                    $this->form_validation->set_rules($file_key, 'Berkas file ' . strtolower($js['nama_surat']), 'required', ['required' => '%s harus dipilih!']);
+                }
+            }
+        }
+
         $this->form_validation->set_rules('status', 'Status', 'trim|required', ['required' => '%s harus dipilih!']);
 
         $this->form_validation->set_error_delimiters('<div class="text-small text-danger">', '</div>');

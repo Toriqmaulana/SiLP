@@ -158,10 +158,12 @@
                                             <input type="file" class="form-control" name="berkas_file[]" id="berkas_file" multiple accept=".pdf">
                                             <small class="text-muted">Max ukuran file: 5 MB.</small>
                                             <div id="file-error" class="text-danger" style="display: none;"></div>
+                                            <?= form_error('berkas_file[]'); ?>
 
                                             <?php if ($kelola_pengajuan['berkas_file']): ?>
                                                 <div class="existing-files">
                                                     <label for="berkas_file">Berkas Terupload:</label>
+                                                    <input type="hidden" name="existing_files" value="<?= $kelola_pengajuan['berkas_file'] ?>">
                                                     <?php foreach (explode(',', $kelola_pengajuan['berkas_file']) as $file): ?>
                                                         <div class="file-item">
                                                             <div class="file-name">
@@ -319,6 +321,20 @@
                                 const data = JSON.parse(text);
                                 if (data.success) {
                                     button.closest('.file-item').remove();
+
+                                    // Update hidden input untuk existing files
+                                    const existingFilesInput = document.querySelector('input[name="existing_files"]');
+                                    if (existingFilesInput) {
+                                        const currentFiles = existingFilesInput.value.split(',');
+                                        const updatedFiles = currentFiles.filter(file => file.trim() !== filename);
+                                        existingFilesInput.value = updatedFiles.join(',');
+
+                                        // Jika tidak ada file tersisa, hapus hidden input
+                                        if (updatedFiles.length === 0 || (updatedFiles.length === 1 && updatedFiles[0] === '')) {
+                                            existingFilesInput.remove();
+                                        }
+                                    }
+
                                     alert('File berhasil dihapus');
                                 } else {
                                     alert(data.message || 'Gagal menghapus file');
