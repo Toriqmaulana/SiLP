@@ -17,7 +17,7 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item">
-            <a class="nav-link" href="<?= base_url('Pemohon'); ?>">
+            <a class="nav-link" href="<?= base_url('Dosen'); ?>">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Dashboard</span></a>
         </li>
@@ -124,25 +124,19 @@
                 <!-- Page Heading -->
                 <div class="card o-hidden border-0 shadow-lg my-3">
                     <div class="card-header text-white bg-success">
-                        <h3 class="card-title mt-2">Tambah Data Pengajuan</h3>
+                        <h3 class="card-title mt-2">Edit Data Pengajuan</h3>
                     </div>
                     <!-- /.card-header -->
 
                     <!-- form start -->
-                    <form class="user" action="<?= base_url('tambahAksiPengajuan'); ?>" method="post" enctype="multipart/form-data">
+                    <form class="user" action="<?= base_url('editAksiPengajuan/' . $kelola_pengajuan['id']); ?>" method="post" enctype="multipart/form-data">
                         <div class="card-body p-0">
-                            <div class="form-group">
-                                <input type="hidden" class="form-control" name="id_jurusan" id="id_jurusan" value="<?= $user->id_jurusan; ?>">
-                            </div>
-                            <div class="form-group">
-                                <input type="hidden" class="form-control" name="id_prodi" id="id_prodi" value="<?= $user->id_prodi; ?>">
-                            </div>
                             <div class="row">
                                 <div class="col-lg">
-                                    <div class="px-4 mt-2">
+                                    <div class="px-4 mt-4">
                                         <div class="form-group">
-                                            <label for="perihal">Perihal *</label>
-                                            <input type="text" class="form-control" name="perihal" autofocus value="<?= set_value('perihal'); ?>" autocomplete="off">
+                                            <label for="perihal">Perihal</label>
+                                            <input type="text" class="form-control" name="perihal" autofocus autocomplete="off" value="<?= $kelola_pengajuan['perihal']; ?>">
                                             <?= form_error('perihal'); ?>
                                         </div>
                                     </div>
@@ -152,8 +146,8 @@
                                 <div class="col-lg">
                                     <div class="px-4">
                                         <div class="form-group">
-                                            <label for="tempat_pelaksanaan">Tempat Pelaksanaan *</label>
-                                            <input type="text" class="form-control" name="tempat_pelaksanaan" value="<?= set_value('tempat_pelaksanaan'); ?>" autocomplete="off">
+                                            <label for="tempat_pelaksanaan">Tempat Pelaksanaan</label>
+                                            <input type="text" class="form-control" name="tempat_pelaksanaan" autocomplete="off" value="<?= $kelola_pengajuan['tempat_pelaksanaan']; ?>">
                                             <?= form_error('tempat_pelaksanaan'); ?>
                                         </div>
                                     </div>
@@ -161,8 +155,8 @@
                                 <div class="col-lg">
                                     <div class="px-4">
                                         <div class="form-group">
-                                            <label for="tanggal_pelaksanaan">Tanggal Pelaksanaan *</label>
-                                            <input type="date" class="form-control" name="tanggal_pelaksanaan" id="tanggal_pelaksanaan" value="<?= set_value('tanggal_pelaksanaan'); ?>">
+                                            <label for="tanggal_pelaksanaan">Tanggal Pelaksanaan</label>
+                                            <input type="date" class="form-control" name="tanggal_pelaksanaan" id="tanggal_pelaksanaan" value="<?= $kelola_pengajuan['tanggal_pelaksanaan'] ?>">
                                             <?= form_error('tanggal_pelaksanaan'); ?>
                                         </div>
                                     </div>
@@ -172,16 +166,38 @@
                                 <div class="col-lg">
                                     <div class="px-4">
                                         <div class="form-group">
-                                            <label for="berkas_file">Berkas File Lampiran (PDF) *</label>
+                                            <label for="berkas_file">Berkas File Lampiran (PDF)</label>
                                             <input type="file" class="form-control" name="berkas_file[]" id="berkas_file" multiple accept=".pdf">
                                             <small class="text-muted">Max ukuran file: 5 MB.</small>
                                             <div id="file-error" class="text-danger" style="display: none;"></div>
                                             <?= form_error('berkas_file[]'); ?>
 
+                                            <?php if ($kelola_pengajuan['berkas_file']): ?>
+                                                <div class="existing-files">
+                                                    <label for="berkas_file">Berkas Terupload:</label>
+                                                    <input type="hidden" name="existing_files" value="<?= $kelola_pengajuan['berkas_file'] ?>">
+                                                    <?php foreach (explode(',', $kelola_pengajuan['berkas_file']) as $file): ?>
+                                                        <div class="file-item">
+                                                            <div class="file-name">
+                                                                <i class="fas fa-fw fa-file-pdf"></i> <?= $file ?>
+                                                            </div>
+                                                            <div class="file-actions">
+                                                                <a href="<?= base_url('uploads/berkas/' . $file) ?>" target="_blank" class="btn btn-sm btn-info" title="Lihat File">
+                                                                    <i class="fas fa-fw fa-eye"></i>
+                                                                </a>
+                                                                <button type="button" class="btn btn-sm btn-danger" title="Hapus File" onclick="removeExistingFile('<?= $file ?>', this)">
+                                                                    <i class="fas fa-fw fa-trash"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    <?php endforeach; ?>
+                                                </div>
+                                            <?php endif; ?>
+
                                             <div id="file-preview" class="file-preview"></div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="jenis_surat">Jenis Surat *</label>
+                                            <label for="jenis_surat">Jenis Surat</label>
                                             <div class="row">
                                                 <?php foreach ($jenis_surat as $js) : ?>
                                                     <?php if (in_array($user->role, explode(',', $js['role_access']))) : ?>
@@ -193,7 +209,7 @@
                                                                     name="jenis_surat[]"
                                                                     id="js<?= $js['id']; ?>"
                                                                     value="<?= $js['id']; ?>"
-                                                                    <?= in_array($js['id'], is_array(set_value('jenis_surat')) ? set_value('jenis_surat') : []) ? 'checked' : ''; ?>>
+                                                                    <?= in_array($js['id'], explode(',', $kelola_pengajuan['jenis_surat'])) ? 'checked' : ''; ?>>
                                                                 <label class="form-check-label" for="js<?= $js['id']; ?>">
                                                                     <?= $js['nama_surat']; ?>
                                                                 </label>
@@ -207,19 +223,13 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <input type="hidden" class="form-control" name="status" id="status" value="Diajukan Ke Prodi">
-                            </div>
                         </div>
                         <!-- /.card-body -->
 
                         <div class="card-footer">
-                            <button type="submit" name="tambah" class="btn btn-success btn-sm">
+                            <button type="submit" name="edit" class="btn btn-success btn-sm">
                                 <i class="fas fa-fw fa-save"></i> Submit
                             </button>
-                            <!-- <button type="reset" name="reset" class="btn btn-dark btn-sm float-right">
-                                <i class="fas fa-fw fa-sync-alt"></i> Reset
-                            </button> -->
                         </div>
                     </form>
                 </div>
@@ -232,6 +242,7 @@
         <!-- End of Main Content -->
 
         <script>
+            // Fungsi untuk preview file baru
             document.getElementById('berkas_file').addEventListener('change', function(e) {
                 const filePreview = document.getElementById('file-preview');
                 const fileError = document.getElementById('file-error');
@@ -285,4 +296,53 @@
                     filePreview.appendChild(fileItem);
                 });
             });
+
+            // Fungsi untuk menghapus file yang sudah ada
+            function removeExistingFile(filename, button) {
+                if (confirm('Apakah Anda yakin ingin menghapus file ini?')) {
+                    fetch('<?= base_url('removeFile/') ?>' + filename, {
+                            method: 'POST',
+                            headers: {
+                                'X-Requested-With': 'XMLHttpRequest',
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                surat_id: '<?= $kelola_pengajuan['id'] ?>'
+                            })
+                        })
+                        .then(response => response.text())
+                        .then(text => {
+                            try {
+                                const data = JSON.parse(text);
+                                if (data.success) {
+                                    button.closest('.file-item').remove();
+
+                                    // Update hidden input untuk existing files
+                                    const existingFilesInput = document.querySelector('input[name="existing_files"]');
+                                    if (existingFilesInput) {
+                                        const currentFiles = existingFilesInput.value.split(',');
+                                        const updatedFiles = currentFiles.filter(file => file.trim() !== filename);
+                                        existingFilesInput.value = updatedFiles.join(',');
+
+                                        // Jika tidak ada file tersisa, hapus hidden input
+                                        if (updatedFiles.length === 0 || (updatedFiles.length === 1 && updatedFiles[0] === '')) {
+                                            existingFilesInput.remove();
+                                        }
+                                    }
+
+                                    alert('File berhasil dihapus');
+                                } else {
+                                    alert(data.message || 'Gagal menghapus file');
+                                }
+                            } catch (e) {
+                                console.error('Response text:', text);
+                                alert('Terjadi kesalahan pada server');
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                            alert('Terjadi kesalahan saat menghapus file. Silakan coba lagi.');
+                        });
+                }
+            }
         </script>

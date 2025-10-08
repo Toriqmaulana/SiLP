@@ -101,7 +101,7 @@ class Admin extends CI_Controller
             'Wadek',
             'Kabag_TU',
             'Staf',
-            'Pemohon',
+            'Dosen',
             'Kaprodi',
             'Kajur'
             // 'Admin'
@@ -368,7 +368,7 @@ class Admin extends CI_Controller
         $data['user'] = $this->auth_model->getDataLoggedIn($_SESSION['id_user']);
         $data['jenis_surat'] = $this->kelola_jenis_surat_model->readDataJenisSurat($id);
         $data['role_access'] = [
-            'Pemohon',
+            'Dosen',
             'Kaprodi'
         ];
 

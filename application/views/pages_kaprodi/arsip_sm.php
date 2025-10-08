@@ -144,7 +144,7 @@
                                         <select class="form-control form-control-sm" id="jenis_surat" name="jenis_surat">
                                             <option value="">Semua Jenis Surat</option>
                                             <?php foreach ($jenis_surat as $js) : ?>
-                                                <?php if (in_array('Pemohon', explode(',', $js['role_access']))) : ?>
+                                                <?php if (in_array('Dosen', explode(',', $js['role_access']))) : ?>
                                                     <option value="<?= $js['id']; ?>"
                                                         <?= isset($_GET['jenis_surat']) && $_GET['jenis_surat'] == $js['id'] ? 'selected' : ''; ?>>
                                                         <?= $js['nama_surat']; ?>

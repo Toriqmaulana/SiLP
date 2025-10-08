@@ -296,7 +296,7 @@ class Kabag_TU extends CI_Controller
             'Wadek',
             'Kabag_TU',
             'Staf',
-            'Pemohon',
+            'Dosen',
             'Kaprodi',
             'Kajur'
         ];

@@ -170,7 +170,7 @@
                                             <label for="role_access">Role Access *</label>
                                             <div class="row">
                                                 <?php $roles = [
-                                                    1 => 'Pemohon',
+                                                    1 => 'Dosen',
                                                     2 => 'Kaprodi'
                                                 ];
                                                 foreach ($roles as $r) : ?>

@@ -217,7 +217,7 @@
                                             <label for="jenis_surat">Jenis Surat</label>
                                             <div class="row">
                                                 <?php foreach ($jenis_surat as $js) : ?>
-                                                    <?php if (in_array('Pemohon', explode(',', $js['role_access']))) : ?>
+                                                    <?php if (in_array('Dosen', explode(',', $js['role_access']))) : ?>
                                                         <div class="col-md-4">
                                                             <div class="form-check">
                                                                 <input

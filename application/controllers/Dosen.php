@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Pemohon extends CI_Controller
+class Dosen extends CI_Controller
 {
     public function __construct()
     {
@@ -44,7 +44,7 @@ class Pemohon extends CI_Controller
         $data['jenis_surat'] = $this->kelola_jenis_surat_model->getDataJenisSurat();
 
         $this->load->view('templates/header', $data);
-        $this->load->view('pages/pemohon', $data);
+        $this->load->view('pages/dosen', $data);
         $this->load->view('templates/footer');
     }
 
@@ -67,7 +67,7 @@ class Pemohon extends CI_Controller
         }
 
         $this->load->view('templates/header', $data);
-        $this->load->view('pages_pemohon/pengajuan', $data);
+        $this->load->view('pages_dosen/pengajuan', $data);
         $this->load->view('templates/footer');
     }
 
@@ -83,7 +83,7 @@ class Pemohon extends CI_Controller
         $data['jenis_surat'] = $this->kelola_jenis_surat_model->getDataJenisSurat();
 
         $this->load->view('templates/header', $data);
-        $this->load->view('pages_pemohon/kelola_pengajuan/tambah', $data);
+        $this->load->view('pages_dosen/kelola_pengajuan/tambah', $data);
         $this->load->view('templates/footer');
     }
 
@@ -113,7 +113,7 @@ class Pemohon extends CI_Controller
         $data['jenis_surat'] = $this->kelola_jenis_surat_model->getDataJenisSurat();
 
         $this->load->view('templates/header', $data);
-        $this->load->view('pages_pemohon/kelola_pengajuan/edit', $data);
+        $this->load->view('pages_dosen/kelola_pengajuan/edit', $data);
         $this->load->view('templates/footer');
     }
 
@@ -198,7 +198,7 @@ class Pemohon extends CI_Controller
         $data['jenis_surat'] = $this->kelola_jenis_surat_model->getDataJenisSurat();
 
         $this->load->view('templates/header', $data);
-        $this->load->view('pages_pemohon/kelola_pengajuan/detail', $data);
+        $this->load->view('pages_dosen/kelola_pengajuan/detail', $data);
         $this->load->view('templates/footer');
     }
 
@@ -235,7 +235,7 @@ class Pemohon extends CI_Controller
         }
 
         $this->load->view('templates/header', $data);
-        $this->load->view('pages_pemohon/arsip', $data);
+        $this->load->view('pages_dosen/arsip', $data);
         $this->load->view('templates/footer');
     }
 
@@ -257,13 +257,13 @@ class Pemohon extends CI_Controller
             'Wadek',
             'Kabag_TU',
             'Staf',
-            'Pemohon',
+            'Dosen',
             'Kaprodi',
             'Kajur'
         ];
 
         $this->load->view('templates/header', $data);
-        $this->load->view('pages_pemohon/kelola_profile/edit', $data);
+        $this->load->view('pages_dosen/kelola_profile/edit', $data);
         $this->load->view('templates/footer');
     }
 

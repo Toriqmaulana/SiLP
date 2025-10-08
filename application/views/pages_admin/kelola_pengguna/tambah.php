@@ -220,7 +220,7 @@
                                                     2 => 'Wadek',
                                                     3 => 'Kabag_TU',
                                                     4 => 'Staf',
-                                                    5 => 'Pemohon',
+                                                    5 => 'Dosen',
                                                     6 => 'Kaprodi',
                                                     7 => 'Kajur'
                                                     // 8 => 'Admin'

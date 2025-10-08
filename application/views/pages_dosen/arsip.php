@@ -17,7 +17,7 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item">
-            <a class="nav-link" href="<?= base_url('Pemohon'); ?>">
+            <a class="nav-link" href="<?= base_url('Dosen'); ?>">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Dashboard</span></a>
         </li>
@@ -115,42 +115,27 @@
             <div class="container-fluid">
 
                 <!-- Page Heading -->
-                <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">Daftar Pengajuan Surat</h1>
-                    <a href="<?= base_url('tambahPengajuan'); ?>" class="d-none d-sm-inline-block btn btn-success btn-sm shadow-sm">
-                        <i class="fas fa-fw fa-plus"></i> Tambah Pengajuan
-                    </a>
+                <div class="d-sm-flex align-items-center justify-content-between mb-2">
+                    <h1 class="h3 mb-2 text-gray-800">Daftar Arsip Pengajuan Surat</h1>
                 </div>
-
-                <?php if ($this->session->flashdata('message')) : ?>
-                    <div class="alert alert-dismissible fade show" role="alert">
-                        <?= $this->session->flashdata('message'); ?>
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                <?php endif; ?>
 
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="d-flex">
-                                <form class="form-inline" method="get" action="<?= base_url('pengajuan'); ?>">
+                                <form class="form-inline" method="get" action="<?= base_url('arsip'); ?>">
                                     <div class="form-group mr-2">
-                                        <label for="status" class="mr-2">Status:</label>
-                                        <select class="form-control form-control-sm" id="status" name="status">
-                                            <option value="">Semua Status</option>
-                                            <option value="Diajukan Ke Prodi" <?= isset($_GET['status']) && $_GET['status'] == 'Diajukan Ke Prodi' ? 'selected' : ''; ?>>Diajukan Ke Prodi</option>
-                                            <option value="Disetujui Kaprodi" <?= isset($_GET['status']) && $_GET['status'] == 'Disetujui Kaprodi' ? 'selected' : ''; ?>>Disetujui Kaprodi</option>
-                                            <option value="Ditolak Kaprodi" <?= isset($_GET['status']) && $_GET['status'] == 'Ditolak Kaprodi' ? 'selected' : ''; ?>>Ditolak Kaprodi</option>
-                                            <option value="Surat Pengantar Selesai Dibuat Kaprodi" <?= isset($_GET['status']) && $_GET['status'] == 'Surat Pengantar Selesai Dibuat Kaprodi' ? 'selected' : ''; ?>>Surat Pengantar Selesai Dibuat Kaprodi</option>
-                                            <option value="Disetujui Kajur" <?= isset($_GET['status']) && $_GET['status'] == 'Disetujui Kajur' ? 'selected' : ''; ?>>Disetujui Kajur</option>
-                                            <option value="Ditolak Kajur" <?= isset($_GET['status']) && $_GET['status'] == 'Ditolak Kajur' ? 'selected' : ''; ?>>Ditolak Kajur</option>
-                                            <option value="Lembar Disposisi Diteruskan Ke Dekan" <?= isset($_GET['status']) && $_GET['status'] == 'Lembar Disposisi Diteruskan Ke Dekan' ? 'selected' : ''; ?>>Lembar Disposisi Diteruskan Ke Dekan</option>
-                                            <option value="Lembar Disposisi Diteruskan Ke Wadek" <?= isset($_GET['status']) && $_GET['status'] == 'Lembar Disposisi Diteruskan Ke Wadek' ? 'selected' : ''; ?>> Lembar Disposisi Diteruskan Ke Wadek</option>
-                                            <option value="Lembar Disposisi Diteruskan Ke Kabag TU" <?= isset($_GET['status']) && $_GET['status'] == 'Lembar Disposisi Diteruskan Ke Kabag TU' ? 'selected' : ''; ?>>Lembar Disposisi Diteruskan Ke Kabag TU</option>
-                                            <option value="Surat Masih Dicetak Staf" <?= isset($_GET['status']) && $_GET['status'] == 'Surat Masih Dicetak Staf' ? 'selected' : ''; ?>>Surat Masih Dicetak Staf</option>
-                                            <option value="Surat Masih Ditandatangani Dekan" <?= isset($_GET['status']) && $_GET['status'] == 'Surat Masih Ditandatangani Dekan' ? 'selected' : ''; ?>>Surat Masih Ditandatangani Dekan</option>
+                                        <label for="jenis_surat" class="mr-2">Jenis Surat:</label>
+                                        <select class="form-control form-control-sm" id="jenis_surat" name="jenis_surat">
+                                            <option value="">Semua Jenis Surat</option>
+                                            <?php foreach ($jenis_surat as $js) : ?>
+                                                <?php if (in_array($user->role, explode(',', $js['role_access']))) : ?>
+                                                    <option value="<?= $js['id']; ?>"
+                                                        <?= isset($_GET['jenis_surat']) && $_GET['jenis_surat'] == $js['id'] ? 'selected' : ''; ?>>
+                                                        <?= $js['nama_surat']; ?>
+                                                    </option>
+                                                <?php endif; ?>
+                                            <?php endforeach; ?>
                                         </select>
                                     </div>
                                     <div class="form-group mr-2">
@@ -164,7 +149,7 @@
                                     <button type="submit" class="btn btn-primary btn-sm mr-2">
                                         <i class="fas fa-fw fa-filter"></i> Filter
                                     </button>
-                                    <a href="<?= base_url('pengajuan'); ?>" class="btn btn-secondary btn-sm">
+                                    <a href="<?= base_url('arsip'); ?>" class="btn btn-secondary btn-sm">
                                         <i class="fas fa-fw fa-sync"></i> Reset
                                     </a>
                                 </form>
@@ -188,7 +173,7 @@
                                 <tbody>
                                     <?php $no = 1;
                                     foreach ($kelola_pengajuan as $kp) : ?>
-                                        <?php if ($user->id == $kp['id_pemohon'] && $kp['status'] != 'Surat Selesai') : ?>
+                                        <?php if ($user->id == $kp['id_pemohon'] && $kp['status'] == 'Surat Selesai') : ?>
                                             <tr>
                                                 <td><?= $no++; ?></td>
                                                 <td><?= format_tanggal_waktu($kp['tanggal_pengajuan']); ?></td>
@@ -222,7 +207,7 @@
                                                                 $stt_ajukan = $stt['update_status'];
                                                                 ?>
                                                             <?php
-                                                            elseif ($stt['status'] == 'Disetujui Kaprodi' || $stt['status'] == 'Ditolak Kaprodi') :
+                                                            elseif ($stt['status'] == 'Disetujui Kaprodi') :
                                                                 $kp_kaprodi = $stt['status'];
                                                                 $stt_kaprodi = $stt['update_status'];
 
@@ -230,7 +215,7 @@
                                                                 $kp_sm = $stt['status'];
                                                                 $stt_sm = $stt['update_status'];
 
-                                                            elseif ($stt['status'] == 'Disetujui Kajur' || $stt['status'] == 'Ditolak Kajur') :
+                                                            elseif ($stt['status'] == 'Disetujui Kajur') :
                                                                 $kp_kajur = $stt['status'];
                                                                 $stt_kajur = $stt['update_status'];
 
@@ -269,29 +254,15 @@
                                                         <?php endif; ?>
                                                     <?php endforeach; ?>
                                                     <?= $kp['status']; ?>
-                                                    <?php if ($kp_kaprodi == 'Ditolak Kaprodi') : ?>
-                                                        <small class="d-block text-danger">Alasan: <?= $kp['alasan_kaprodi']; ?></small>
-                                                    <?php endif; ?>
-                                                    <?php if ($kp_kajur == 'Ditolak Kajur') : ?>
-                                                        <small class="d-block text-danger">Alasan: <?= $kp['alasan_kajur']; ?></small>
-                                                    <?php endif; ?>
                                                 </td>
                                                 <td>
-                                                    <div class="btn-group" role="group">
-                                                        <a href="<?= base_url('detailPengajuan/' . $kp['id']); ?>" title="Detail Pengajuan" class="btn btn-info btn-sm">
-                                                            <i class="fas fa-fw fa-eye"></i>
-                                                        </a>
-
-                                                        <?php if ($kp['status'] == 'Diajukan Ke Prodi') : ?>
-                                                            <a href="<?= base_url('editPengajuan/' . $kp['id']); ?>" title="Edit Pengajuan" class="btn btn-warning btn-sm ml-2">
-                                                                <i class="fas fa-fw fa-edit"></i>
-                                                            </a>
-
-                                                            <a href="<?= base_url('hapusPengajuan/' . $kp['id']); ?>" title="Hapus Pengajuan" class="btn btn-danger btn-sm ml-2" onclick="return confirm('Hapus data ini?');">
-                                                                <i class="fas fa-fw fa-trash"></i>
+                                                    <?php foreach ($jenis_surat as $js) : ?>
+                                                        <?php if (in_array($js['id'], explode(',', $kp['jenis_surat']))) : ?>
+                                                            <a href="<?= base_url('uploads/sk/' . $kp['file_' . strtolower($js['nama_jenis_surat'])]); ?>" target="_blank" class="btn btn-dark btn-sm mt-1" title="Cetak Surat">
+                                                                <i class="fas fa-fw fa-print"></i> <?= 'File ' . $js['nama_surat']; ?>
                                                             </a>
                                                         <?php endif; ?>
-                                                    </div>
+                                                    <?php endforeach ?>
                                                 </td>
                                             </tr>
 
@@ -316,7 +287,7 @@
                                                                         <li class="timeline-item completed">
                                                                             <i class="fas fa-user-check"></i>
                                                                             <small style="display: inline; font-size: 15px;"><?= $kp_kaprodi; ?></small>
-                                                                            <small style="padding-left: 40px;"><?= $kp_kaprodi == 'Disetujui Kaprodi' || $kp_kaprodi == 'Ditolak Kaprodi' ? format_tanggal_waktu($stt_kaprodi) : ''; ?></small>
+                                                                            <small style="padding-left: 40px;"><?= $kp_kaprodi == 'Disetujui Kaprodi' ? format_tanggal_waktu($stt_kaprodi) : ''; ?></small>
                                                                         </li>
                                                                         <li class="timeline-item completed">
                                                                             <i class="fas fa-envelope-open-text"></i>
@@ -326,7 +297,7 @@
                                                                         <li class="timeline-item completed">
                                                                             <i class="fas fa-user-check"></i>
                                                                             <small style="display: inline; font-size: 15px;"><?= $kp_kajur; ?></small>
-                                                                            <small style="padding-left: 40px;"><?= $kp_kajur == 'Disetujui Kajur' || $kp_kajur == 'Ditolak Kajur' ? format_tanggal_waktu($stt_kajur) : ''; ?></small>
+                                                                            <small style="padding-left: 40px;"><?= $kp_kajur == 'Disetujui Kajur' ? format_tanggal_waktu($stt_kajur) : ''; ?></small>
                                                                         </li>
                                                                     </div>
                                                                     <div class="col-6">
