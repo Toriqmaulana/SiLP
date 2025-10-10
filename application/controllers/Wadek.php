@@ -21,7 +21,7 @@ class Wadek extends CI_Controller
 
     public function index()
     {
-        if (!isset($_SESSION['logged_in'])) {
+        if (!isset($_SESSION['logged_in']) || $_SESSION['role'] != 'Wadek') {
             $this->session->set_flashdata('pesan', '<div class="text-danger text-center">Silahkan Login Dulu!</div>');
             redirect('/');
         }
@@ -58,7 +58,7 @@ class Wadek extends CI_Controller
 
     public function disposisiWadek()
     {
-        if (!isset($_SESSION['logged_in'])) {
+        if (!isset($_SESSION['logged_in']) || $_SESSION['role'] != 'Wadek') {
             $this->session->set_flashdata('pesan', '<div class="text-danger text-center">Silahkan Login Dulu!</div>');
             redirect('/');
         }
@@ -84,7 +84,7 @@ class Wadek extends CI_Controller
 
     public function detailSuratMasukWadek($id)
     {
-        if (!isset($_SESSION['logged_in'])) {
+        if (!isset($_SESSION['logged_in']) || $_SESSION['role'] != 'Wadek') {
             $this->session->set_flashdata('pesan', '<div class="text-danger text-center">Silahkan Login Dulu!</div>');
             redirect('/');
         }
@@ -112,7 +112,7 @@ class Wadek extends CI_Controller
 
     public function tambahDisposisiWadek($id)
     {
-        if (!isset($_SESSION['logged_in'])) {
+        if (!isset($_SESSION['logged_in']) || $_SESSION['role'] != 'Wadek') {
             $this->session->set_flashdata('pesan', '<div class="text-danger text-center">Silahkan Login Dulu!</div>');
             redirect('/');
         }
@@ -148,7 +148,7 @@ class Wadek extends CI_Controller
 
     public function lihatSuratMasukWadek($id)
     {
-        if (!isset($_SESSION['logged_in'])) {
+        if (!isset($_SESSION['logged_in']) || $_SESSION['role'] != 'Wadek') {
             $this->session->set_flashdata('pesan', '<div class="text-danger text-center">Silahkan Login Dulu!</div>');
             redirect('/');
         }
@@ -176,7 +176,7 @@ class Wadek extends CI_Controller
 
     public function editDisposisiWadek($id)
     {
-        if (!isset($_SESSION['logged_in'])) {
+        if (!isset($_SESSION['logged_in']) || $_SESSION['role'] != 'Wadek') {
             $this->session->set_flashdata('pesan', '<div class="text-danger text-center">Silahkan Login Dulu!</div>');
             redirect('/');
         }
@@ -212,7 +212,7 @@ class Wadek extends CI_Controller
 
     public function detailDisposisiWadek($id)
     {
-        if (!isset($_SESSION['logged_in'])) {
+        if (!isset($_SESSION['logged_in']) || $_SESSION['role'] != 'Wadek') {
             $this->session->set_flashdata('pesan', '<div class="text-danger text-center">Silahkan Login Dulu!</div>');
             redirect('/');
         }
@@ -235,7 +235,7 @@ class Wadek extends CI_Controller
 
     public function printDisposisiWadek($id)
     {
-        if (!isset($_SESSION['logged_in'])) {
+        if (!isset($_SESSION['logged_in']) || $_SESSION['role'] != 'Wadek') {
             $this->session->set_flashdata('pesan', '<div class="text-danger text-center">Silahkan Login Dulu!</div>');
             redirect('/');
         }
@@ -258,7 +258,7 @@ class Wadek extends CI_Controller
 
     public function arsipDisposisiWadek()
     {
-        if (!isset($_SESSION['logged_in'])) {
+        if (!isset($_SESSION['logged_in']) || $_SESSION['role'] != 'Wadek') {
             $this->session->set_flashdata('pesan', '<div class="text-danger text-center">Silahkan Login Dulu!</div>');
             redirect('/');
         }
@@ -284,7 +284,7 @@ class Wadek extends CI_Controller
 
     public function profileWadek()
     {
-        if (!isset($_SESSION['logged_in'])) {
+        if (!isset($_SESSION['logged_in']) || $_SESSION['role'] != 'Wadek') {
             $this->session->set_flashdata('pesan', '<div class="text-danger text-center">Silahkan Login Dulu!</div>');
             redirect('/');
         }
@@ -312,7 +312,7 @@ class Wadek extends CI_Controller
 
     public function editProfileWadek($id)
     {
-        if (!isset($_SESSION['logged_in'])) {
+        if (!isset($_SESSION['logged_in']) || $_SESSION['role'] != 'Wadek') {
             $this->session->set_flashdata('pesan', '<div class="text-danger text-center">Silahkan Login Dulu!</div>');
             redirect('/');
         }

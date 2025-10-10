@@ -21,7 +21,7 @@ class Kajur extends CI_Controller
 
     public function index()
     {
-        if (!isset($_SESSION['logged_in'])) {
+        if (!isset($_SESSION['logged_in']) || $_SESSION['role'] != 'Kajur') {
             $this->session->set_flashdata('pesan', '<div class="text-danger text-center">Silahkan Login Dulu!</div>');
             redirect('/');
         }
@@ -60,7 +60,7 @@ class Kajur extends CI_Controller
 
     public function suratKajur()
     {
-        if (!isset($_SESSION['logged_in'])) {
+        if (!isset($_SESSION['logged_in']) || $_SESSION['role'] != 'Kajur') {
             $this->session->set_flashdata('pesan', '<div class="text-danger text-center">Silahkan Login Dulu!</div>');
             redirect('/');
         }
@@ -84,7 +84,7 @@ class Kajur extends CI_Controller
 
     public function detailSuratMasukKajur($id)
     {
-        if (!isset($_SESSION['logged_in'])) {
+        if (!isset($_SESSION['logged_in']) || $_SESSION['role'] != 'Kajur') {
             $this->session->set_flashdata('pesan', '<div class="text-danger text-center">Silahkan Login Dulu!</div>');
             redirect('/');
         }
@@ -125,7 +125,7 @@ class Kajur extends CI_Controller
 
     public function printSuratMasukKajur($id)
     {
-        if (!isset($_SESSION['logged_in'])) {
+        if (!isset($_SESSION['logged_in']) || $_SESSION['role'] != 'Kajur') {
             $this->session->set_flashdata('pesan', '<div class="text-danger text-center">Silahkan Login Dulu!</div>');
             redirect('/');
         }
@@ -153,7 +153,7 @@ class Kajur extends CI_Controller
 
     public function arsipSuratMasukKajur()
     {
-        if (!isset($_SESSION['logged_in'])) {
+        if (!isset($_SESSION['logged_in']) || $_SESSION['role'] != 'Kajur') {
             $this->session->set_flashdata('pesan', '<div class="text-danger text-center">Silahkan Login Dulu!</div>');
             redirect('/');
         }
@@ -177,7 +177,7 @@ class Kajur extends CI_Controller
 
     public function profileKajur()
     {
-        if (!isset($_SESSION['logged_in'])) {
+        if (!isset($_SESSION['logged_in']) || $_SESSION['role'] != 'Kajur') {
             $this->session->set_flashdata('pesan', '<div class="text-danger text-center">Silahkan Login Dulu!</div>');
             redirect('/');
         }
@@ -205,7 +205,7 @@ class Kajur extends CI_Controller
 
     public function editProfileKajur($id)
     {
-        if (!isset($_SESSION['logged_in'])) {
+        if (!isset($_SESSION['logged_in']) || $_SESSION['role'] != 'Kajur') {
             $this->session->set_flashdata('pesan', '<div class="text-danger text-center">Silahkan Login Dulu!</div>');
             redirect('/');
         }

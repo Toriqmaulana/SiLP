@@ -22,7 +22,7 @@ class Kaprodi extends CI_Controller
 
     public function index()
     {
-        if (!isset($_SESSION['logged_in'])) {
+        if (!isset($_SESSION['logged_in']) || $_SESSION['role'] != 'Kaprodi') {
             $this->session->set_flashdata('pesan', '<div class="text-danger text-center">Silahkan Login Dulu!</div>');
             redirect('/');
         }
@@ -61,7 +61,7 @@ class Kaprodi extends CI_Controller
 
     public function suratKaprodi()
     {
-        if (!isset($_SESSION['logged_in'])) {
+        if (!isset($_SESSION['logged_in']) || $_SESSION['role'] != 'Kaprodi') {
             $this->session->set_flashdata('pesan', '<div class="text-danger text-center">Silahkan Login Dulu!</div>');
             redirect('/');
         }
@@ -85,7 +85,7 @@ class Kaprodi extends CI_Controller
 
     public function editPengajuanKaprodi($id)
     {
-        if (!isset($_SESSION['logged_in'])) {
+        if (!isset($_SESSION['logged_in']) || $_SESSION['role'] != 'Kaprodi') {
             $this->session->set_flashdata('pesan', '<div class="text-danger text-center">Silahkan Login Dulu!</div>');
             redirect('/');
         }
@@ -114,7 +114,7 @@ class Kaprodi extends CI_Controller
 
     public function detailPengajuanKaprodi($id)
     {
-        if (!isset($_SESSION['logged_in'])) {
+        if (!isset($_SESSION['logged_in']) || $_SESSION['role'] != 'Kaprodi') {
             $this->session->set_flashdata('pesan', '<div class="text-danger text-center">Silahkan Login Dulu!</div>');
             redirect('/');
         }
@@ -151,7 +151,7 @@ class Kaprodi extends CI_Controller
 
     public function tambahSuratPengantarKaprodi($id)
     {
-        if (!isset($_SESSION['logged_in'])) {
+        if (!isset($_SESSION['logged_in']) || $_SESSION['role'] != 'Kaprodi') {
             $this->session->set_flashdata('pesan', '<div class="text-danger text-center">Silahkan Login Dulu!</div>');
             redirect('/');
         }
@@ -190,7 +190,7 @@ class Kaprodi extends CI_Controller
 
     public function editSuratPengantarKaprodi($id)
     {
-        if (!isset($_SESSION['logged_in'])) {
+        if (!isset($_SESSION['logged_in']) || $_SESSION['role'] != 'Kaprodi') {
             $this->session->set_flashdata('pesan', '<div class="text-danger text-center">Silahkan Login Dulu!</div>');
             redirect('/');
         }
@@ -228,7 +228,7 @@ class Kaprodi extends CI_Controller
 
     public function detailSuratPengantarKaprodi($id)
     {
-        if (!isset($_SESSION['logged_in'])) {
+        if (!isset($_SESSION['logged_in']) || $_SESSION['role'] != 'Kaprodi') {
             $this->session->set_flashdata('pesan', '<div class="text-danger text-center">Silahkan Login Dulu!</div>');
             redirect('/');
         }
@@ -256,7 +256,7 @@ class Kaprodi extends CI_Controller
 
     public function printSuratPengantarKaprodi($id)
     {
-        if (!isset($_SESSION['logged_in'])) {
+        if (!isset($_SESSION['logged_in']) || $_SESSION['role'] != 'Kaprodi') {
             $this->session->set_flashdata('pesan', '<div class="text-danger text-center">Silahkan Login Dulu!</div>');
             redirect('/');
         }
@@ -284,7 +284,7 @@ class Kaprodi extends CI_Controller
 
     public function arsipSuratKaprodi()
     {
-        if (!isset($_SESSION['logged_in'])) {
+        if (!isset($_SESSION['logged_in']) || $_SESSION['role'] != 'Kaprodi') {
             $this->session->set_flashdata('pesan', '<div class="text-danger text-center">Silahkan Login Dulu!</div>');
             redirect('/');
         }
@@ -308,7 +308,7 @@ class Kaprodi extends CI_Controller
 
     public function profileKaprodi()
     {
-        if (!isset($_SESSION['logged_in'])) {
+        if (!isset($_SESSION['logged_in']) || $_SESSION['role'] != 'Kaprodi') {
             $this->session->set_flashdata('pesan', '<div class="text-danger text-center">Silahkan Login Dulu!</div>');
             redirect('/');
         }
@@ -336,7 +336,7 @@ class Kaprodi extends CI_Controller
 
     public function editProfileKaprodi($id)
     {
-        if (!isset($_SESSION['logged_in'])) {
+        if (!isset($_SESSION['logged_in']) || $_SESSION['role'] != 'Kaprodi') {
             $this->session->set_flashdata('pesan', '<div class="text-danger text-center">Silahkan Login Dulu!</div>');
             redirect('/');
         }
@@ -348,7 +348,7 @@ class Kaprodi extends CI_Controller
 
     public function suratpengajuanKaprodi()
     {
-        if (!isset($_SESSION['logged_in'])) {
+        if (!isset($_SESSION['logged_in']) || $_SESSION['role'] != 'Kaprodi') {
             $this->session->set_flashdata('pesan', '<div class="text-danger text-center">Silahkan Login Dulu!</div>');
             redirect('/');
         }
@@ -371,7 +371,7 @@ class Kaprodi extends CI_Controller
 
     public function tambahSuratPengajuanKaprodi()
     {
-        if (!isset($_SESSION['logged_in'])) {
+        if (!isset($_SESSION['logged_in']) || $_SESSION['role'] != 'Kaprodi') {
             $this->session->set_flashdata('pesan', '<div class="text-danger text-center">Silahkan Login Dulu!</div>');
             redirect('/');
         }
@@ -401,7 +401,7 @@ class Kaprodi extends CI_Controller
 
     public function editSuratPengajuanKaprodi($id)
     {
-        if (!isset($_SESSION['logged_in'])) {
+        if (!isset($_SESSION['logged_in']) || $_SESSION['role'] != 'Kaprodi') {
             $this->session->set_flashdata('pesan', '<div class="text-danger text-center">Silahkan Login Dulu!</div>');
             redirect('/');
         }
@@ -487,7 +487,7 @@ class Kaprodi extends CI_Controller
 
     public function detailSuratPengajuanKaprodi($id)
     {
-        if (!isset($_SESSION['logged_in'])) {
+        if (!isset($_SESSION['logged_in']) || $_SESSION['role'] != 'Kaprodi') {
             $this->session->set_flashdata('pesan', '<div class="text-danger text-center">Silahkan Login Dulu!</div>');
             redirect('/');
         }
@@ -517,7 +517,7 @@ class Kaprodi extends CI_Controller
 
     public function hapusSuratPengajuanKaprodi($id)
     {
-        if (!isset($_SESSION['logged_in'])) {
+        if (!isset($_SESSION['logged_in']) || $_SESSION['role'] != 'Kaprodi') {
             $this->session->set_flashdata('pesan', '<div class="text-danger text-center">Silahkan Login Dulu!</div>');
             redirect('/');
         }
@@ -531,7 +531,7 @@ class Kaprodi extends CI_Controller
 
     public function arsipSuratPengajuanKaprodi()
     {
-        if (!isset($_SESSION['logged_in'])) {
+        if (!isset($_SESSION['logged_in']) || $_SESSION['role'] != 'Kaprodi') {
             $this->session->set_flashdata('pesan', '<div class="text-danger text-center">Silahkan Login Dulu!</div>');
             redirect('/');
         }

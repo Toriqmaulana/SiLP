@@ -22,7 +22,7 @@ class Staf extends CI_Controller
 
     public function index()
     {
-        if (!isset($_SESSION['logged_in'])) {
+        if (!isset($_SESSION['logged_in']) || $_SESSION['role'] != 'Staf') {
             $this->session->set_flashdata('pesan', '<div class="text-danger text-center">Silahkan Login Dulu!</div>');
             redirect('/');
         }
@@ -59,7 +59,7 @@ class Staf extends CI_Controller
 
     public function disposisiStaf()
     {
-        if (!isset($_SESSION['logged_in'])) {
+        if (!isset($_SESSION['logged_in']) || $_SESSION['role'] != 'Staf') {
             $this->session->set_flashdata('pesan', '<div class="text-danger text-center">Silahkan Login Dulu!</div>');
             redirect('/');
         }
@@ -83,7 +83,7 @@ class Staf extends CI_Controller
 
     public function tambahDisposisiStaf($id)
     {
-        if (!isset($_SESSION['logged_in'])) {
+        if (!isset($_SESSION['logged_in']) || $_SESSION['role'] != 'Staf') {
             $this->session->set_flashdata('pesan', '<div class="text-danger text-center">Silahkan Login Dulu!</div>');
             redirect('/');
         }
@@ -124,7 +124,7 @@ class Staf extends CI_Controller
 
     public function editDisposisiStaf($id)
     {
-        if (!isset($_SESSION['logged_in'])) {
+        if (!isset($_SESSION['logged_in']) || $_SESSION['role'] != 'Staf') {
             $this->session->set_flashdata('pesan', '<div class="text-danger text-center">Silahkan Login Dulu!</div>');
             redirect('/');
         }
@@ -165,7 +165,7 @@ class Staf extends CI_Controller
 
     public function detailDisposisiStaf($id)
     {
-        if (!isset($_SESSION['logged_in'])) {
+        if (!isset($_SESSION['logged_in']) || $_SESSION['role'] != 'Staf') {
             $this->session->set_flashdata('pesan', '<div class="text-danger text-center">Silahkan Login Dulu!</div>');
             redirect('/');
         }
@@ -188,7 +188,7 @@ class Staf extends CI_Controller
 
     public function printDisposisiStaf($id)
     {
-        if (!isset($_SESSION['logged_in'])) {
+        if (!isset($_SESSION['logged_in']) || $_SESSION['role'] != 'Staf') {
             $this->session->set_flashdata('pesan', '<div class="text-danger text-center">Silahkan Login Dulu!</div>');
             redirect('/');
         }
@@ -211,7 +211,7 @@ class Staf extends CI_Controller
 
     public function arsipDisposisiStaf()
     {
-        if (!isset($_SESSION['logged_in'])) {
+        if (!isset($_SESSION['logged_in']) || $_SESSION['role'] != 'Staf') {
             $this->session->set_flashdata('pesan', '<div class="text-danger text-center">Silahkan Login Dulu!</div>');
             redirect('/');
         }
@@ -235,7 +235,7 @@ class Staf extends CI_Controller
 
     public function suratStaf()
     {
-        if (!isset($_SESSION['logged_in'])) {
+        if (!isset($_SESSION['logged_in']) || $_SESSION['role'] != 'Staf') {
             $this->session->set_flashdata('pesan', '<div class="text-danger text-center">Silahkan Login Dulu!</div>');
             redirect('/');
         }
@@ -259,7 +259,7 @@ class Staf extends CI_Controller
 
     public function viewSuratMasukStaf($id)
     {
-        if (!isset($_SESSION['logged_in'])) {
+        if (!isset($_SESSION['logged_in']) || $_SESSION['role'] != 'Staf') {
             $this->session->set_flashdata('pesan', '<div class="text-danger text-center">Silahkan Login Dulu!</div>');
             redirect('/');
         }
@@ -287,7 +287,7 @@ class Staf extends CI_Controller
 
     public function tambahNoSuratKeluarStaf($id)
     {
-        if (!isset($_SESSION['logged_in'])) {
+        if (!isset($_SESSION['logged_in']) || $_SESSION['role'] != 'Staf') {
             $this->session->set_flashdata('pesan', '<div class="text-danger text-center">Silahkan Login Dulu!</div>');
             redirect('/');
         }
@@ -325,7 +325,7 @@ class Staf extends CI_Controller
 
     public function tambahSuratKeluarStaf($id)
     {
-        if (!isset($_SESSION['logged_in'])) {
+        if (!isset($_SESSION['logged_in']) || $_SESSION['role'] != 'Staf') {
             $this->session->set_flashdata('pesan', '<div class="text-danger text-center">Silahkan Login Dulu!</div>');
             redirect('/');
         }
@@ -355,7 +355,7 @@ class Staf extends CI_Controller
 
     public function arsipSuratKeluarStaf()
     {
-        if (!isset($_SESSION['logged_in'])) {
+        if (!isset($_SESSION['logged_in']) || $_SESSION['role'] != 'Staf') {
             $this->session->set_flashdata('pesan', '<div class="text-danger text-center">Silahkan Login Dulu!</div>');
             redirect('/');
         }
@@ -379,7 +379,7 @@ class Staf extends CI_Controller
 
     public function profileStaf()
     {
-        if (!isset($_SESSION['logged_in'])) {
+        if (!isset($_SESSION['logged_in']) || $_SESSION['role'] != 'Staf') {
             $this->session->set_flashdata('pesan', '<div class="text-danger text-center">Silahkan Login Dulu!</div>');
             redirect('/');
         }
@@ -407,7 +407,7 @@ class Staf extends CI_Controller
 
     public function editProfileStaf($id)
     {
-        if (!isset($_SESSION['logged_in'])) {
+        if (!isset($_SESSION['logged_in']) || $_SESSION['role'] != 'Staf') {
             $this->session->set_flashdata('pesan', '<div class="text-danger text-center">Silahkan Login Dulu!</div>');
             redirect('/');
         }
