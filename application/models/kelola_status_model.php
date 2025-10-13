@@ -1,6 +1,6 @@
 <?php
 
-class kelola_status_model extends CI_Model
+class Kelola_status_model extends CI_Model
 {
     public function getAllStatus()
     {

@@ -1,6 +1,6 @@
 <?php
 
-class kelola_sk_model extends CI_Model
+class Kelola_sk_model extends CI_Model
 {
     public function generateNomorSuratKeluar($id)
     {

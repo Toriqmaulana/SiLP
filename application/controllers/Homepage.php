@@ -7,7 +7,7 @@ class Homepage extends CI_Controller
 	{
 		parent::__construct();
 
-		$this->load->model('auth_model');
+		$this->load->model('Auth_model');
 	}
 
 	public function index()
@@ -20,7 +20,7 @@ class Homepage extends CI_Controller
 			$username = htmlspecialchars($this->input->post('username', true));
 			$password = htmlspecialchars($this->input->post('password', true));
 
-			$cekData = $this->auth_model->login($username);
+			$cekData = $this->Auth_model->login($username);
 
 			if ($cekData) {
 				if (password_verify($password, $cekData->password)) {

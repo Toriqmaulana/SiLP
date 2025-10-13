@@ -1,6 +1,6 @@
 <?php
 
-class kelola_surat_model extends CI_Model
+class Kelola_surat_model extends CI_Model
 {
     public function insertPengajuanSurat()
     {

@@ -7,15 +7,15 @@ class Admin extends CI_Controller
     {
         parent::__construct();
 
-        $this->load->model('auth_model');
-        $this->load->model('kelola_user_model');
-        $this->load->model('kelola_prodi_model');
-        $this->load->model('kelola_jenis_surat_model');
-        $this->load->model('kelola_surat_model');
-        $this->load->model('kelola_sm_model');
-        $this->load->model('kelola_disposisi_model');
-        $this->load->model('kelola_sk_model');
-        $this->load->model('kelola_status_model');
+        $this->load->model('Auth_model');
+        $this->load->model('Kelola_user_model');
+        $this->load->model('Kelola_prodi_model');
+        $this->load->model('Kelola_jenis_surat_model');
+        $this->load->model('Kelola_surat_model');
+        $this->load->model('Kelola_sm_model');
+        $this->load->model('Kelola_disposisi_model');
+        $this->load->model('Kelola_sk_model');
+        $this->load->model('Kelola_status_model');
         $this->load->helper('date');
     }
 
@@ -27,11 +27,11 @@ class Admin extends CI_Controller
         }
 
         $data['judul'] = 'Dashboard';
-        $data['user'] = $this->auth_model->getDataLoggedIn($_SESSION['id_user']);
-        $data['jumlah_pengguna'] = $this->kelola_user_model->getDataJumlahUser();
-        $data['jumlah_prodi'] = $this->kelola_prodi_model->getDataJumlahProdi();
-        $data['jumlah_jurusan'] = $this->kelola_prodi_model->getDataJumlahJurusan();
-        $data['jumlah_jenis_surat'] = $this->kelola_jenis_surat_model->getDataJumlahJenisSurat();
+        $data['user'] = $this->Auth_model->getDataLoggedIn($_SESSION['id_user']);
+        $data['jumlah_pengguna'] = $this->Kelola_user_model->getDataJumlahUser();
+        $data['jumlah_prodi'] = $this->Kelola_prodi_model->getDataJumlahProdi();
+        $data['jumlah_jurusan'] = $this->Kelola_prodi_model->getDataJumlahJurusan();
+        $data['jumlah_jenis_surat'] = $this->Kelola_jenis_surat_model->getDataJumlahJenisSurat();
 
         $this->load->view('templates/header', $data);
         $this->load->view('pages/admin', $data);
@@ -46,8 +46,8 @@ class Admin extends CI_Controller
         }
 
         $data['judul'] = 'Pengguna';
-        $data['user'] = $this->auth_model->getDataLoggedIn($_SESSION['id_user']);
-        $data['kelola_user'] = $this->kelola_user_model->getDataUser();
+        $data['user'] = $this->Auth_model->getDataLoggedIn($_SESSION['id_user']);
+        $data['kelola_user'] = $this->Kelola_user_model->getDataUser();
 
         $this->load->view('templates/header', $data);
         $this->load->view('pages_admin/pengguna', $data);
@@ -62,9 +62,9 @@ class Admin extends CI_Controller
         }
 
         $data['judul'] = 'Tambah Pengguna';
-        $data['user'] = $this->auth_model->getDataLoggedIn($_SESSION['id_user']);
-        $data['jurusan'] = $this->kelola_prodi_model->getDataJurusan();
-        $data['prodi'] = $this->kelola_prodi_model->getDataProdi();
+        $data['user'] = $this->Auth_model->getDataLoggedIn($_SESSION['id_user']);
+        $data['jurusan'] = $this->Kelola_prodi_model->getDataJurusan();
+        $data['prodi'] = $this->Kelola_prodi_model->getDataProdi();
 
         $this->load->view('templates/header', $data);
         $this->load->view('pages_admin/kelola_pengguna/tambah', $data);
@@ -78,7 +78,7 @@ class Admin extends CI_Controller
         if ($this->form_validation->run() == FALSE) {
             $this->tambahPengguna();
         } else {
-            $this->kelola_user_model->insertDataUser();
+            $this->Kelola_user_model->insertDataUser();
             $this->session->set_flashdata('message', '<div class="alert alert-primary" role="alert"><strong>Berhasil Ditambahkan!</strong></div>');
             redirect('pengguna');
         }
@@ -92,10 +92,10 @@ class Admin extends CI_Controller
         }
 
         $data['judul'] = 'Edit Pengguna';
-        $data['user'] = $this->auth_model->getDataLoggedIn($_SESSION['id_user']);
-        $data['kelola_user'] = $this->kelola_user_model->readDataUser($id);
-        $data['jurusan'] = $this->kelola_prodi_model->getDataJurusan();
-        $data['prodi'] = $this->kelola_prodi_model->getDataProdi();
+        $data['user'] = $this->Auth_model->getDataLoggedIn($_SESSION['id_user']);
+        $data['kelola_user'] = $this->Kelola_user_model->readDataUser($id);
+        $data['jurusan'] = $this->Kelola_prodi_model->getDataJurusan();
+        $data['prodi'] = $this->Kelola_prodi_model->getDataProdi();
         $data['role_user'] = [
             'Dekan',
             'Wadek',
@@ -119,7 +119,7 @@ class Admin extends CI_Controller
         if ($this->form_validation->run() == FALSE) {
             $this->editPengguna($id);
         } else {
-            $this->kelola_user_model->updateDataUser($id);
+            $this->Kelola_user_model->updateDataUser($id);
             $this->session->set_flashdata('message', '<div class="alert alert-warning" role="alert"><strong>Berhasil Diubah!</strong></div>');
             redirect('pengguna');
         }
@@ -132,9 +132,9 @@ class Admin extends CI_Controller
             redirect('/');
         }
 
-        $data['user'] = $this->auth_model->getDataLoggedIn($_SESSION['id_user']);
+        $data['user'] = $this->Auth_model->getDataLoggedIn($_SESSION['id_user']);
 
-        $this->kelola_user_model->deleteDataUser($id);
+        $this->Kelola_user_model->deleteDataUser($id);
         $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert"><strong>Berhasil Dihapus!</strong></div>');
         redirect('pengguna');
     }
@@ -147,8 +147,8 @@ class Admin extends CI_Controller
         }
 
         $data['judul'] = 'Prodi';
-        $data['user'] = $this->auth_model->getDataLoggedIn($_SESSION['id_user']);
-        $data['kelola_prodi'] = $this->kelola_prodi_model->getDataProdi();
+        $data['user'] = $this->Auth_model->getDataLoggedIn($_SESSION['id_user']);
+        $data['kelola_prodi'] = $this->Kelola_prodi_model->getDataProdi();
 
         $this->load->view('templates/header', $data);
         $this->load->view('pages_admin/prodi', $data);
@@ -163,7 +163,7 @@ class Admin extends CI_Controller
         }
 
         $data['judul'] = 'Tambah Prodi';
-        $data['user'] = $this->auth_model->getDataLoggedIn($_SESSION['id_user']);
+        $data['user'] = $this->Auth_model->getDataLoggedIn($_SESSION['id_user']);
 
         $this->load->view('templates/header', $data);
         $this->load->view('pages_admin/kelola_prodi/tambah', $data);
@@ -177,7 +177,7 @@ class Admin extends CI_Controller
         if ($this->form_validation->run() == FALSE) {
             $this->tambahProdi();
         } else {
-            $this->kelola_prodi_model->insertDataProdi();
+            $this->Kelola_prodi_model->insertDataProdi();
             $this->session->set_flashdata('message', '<div class="alert alert-primary" role="alert"><strong>Berhasil Ditambahkan!</strong></div>');
             redirect('prodi');
         }
@@ -191,8 +191,8 @@ class Admin extends CI_Controller
         }
 
         $data['judul'] = 'Edit Prodi';
-        $data['user'] = $this->auth_model->getDataLoggedIn($_SESSION['id_user']);
-        $data['kelola_prodi'] = $this->kelola_prodi_model->readDataProdi($id);
+        $data['user'] = $this->Auth_model->getDataLoggedIn($_SESSION['id_user']);
+        $data['kelola_prodi'] = $this->Kelola_prodi_model->readDataProdi($id);
 
         $this->load->view('templates/header', $data);
         $this->load->view('pages_admin/kelola_prodi/edit', $data);
@@ -206,7 +206,7 @@ class Admin extends CI_Controller
         if ($this->form_validation->run() == FALSE) {
             $this->editProdi($id);
         } else {
-            $this->kelola_prodi_model->updateDataProdi($id);
+            $this->Kelola_prodi_model->updateDataProdi($id);
             $this->session->set_flashdata('message', '<div class="alert alert-warning" role="alert"><strong>Berhasil Diubah!</strong></div>');
             redirect('prodi');
         }
@@ -219,9 +219,9 @@ class Admin extends CI_Controller
             redirect('/');
         }
 
-        $data['user'] = $this->auth_model->getDataLoggedIn($_SESSION['id_user']);
+        $data['user'] = $this->Auth_model->getDataLoggedIn($_SESSION['id_user']);
 
-        $this->kelola_prodi_model->deleteDataProdi($id);
+        $this->Kelola_prodi_model->deleteDataProdi($id);
         $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert"><strong>Berhasil Dihapus!</strong></div>');
         redirect('prodi');
     }
@@ -234,8 +234,8 @@ class Admin extends CI_Controller
         }
 
         $data['judul'] = 'Jurusan';
-        $data['user'] = $this->auth_model->getDataLoggedIn($_SESSION['id_user']);
-        $data['kelola_jurusan'] = $this->kelola_prodi_model->getDataJurusan();
+        $data['user'] = $this->Auth_model->getDataLoggedIn($_SESSION['id_user']);
+        $data['kelola_jurusan'] = $this->Kelola_prodi_model->getDataJurusan();
 
         $this->load->view('templates/header', $data);
         $this->load->view('pages_admin/jurusan', $data);
@@ -250,7 +250,7 @@ class Admin extends CI_Controller
         }
 
         $data['judul'] = 'Tambah Jurusan';
-        $data['user'] = $this->auth_model->getDataLoggedIn($_SESSION['id_user']);
+        $data['user'] = $this->Auth_model->getDataLoggedIn($_SESSION['id_user']);
 
         $this->load->view('templates/header', $data);
         $this->load->view('pages_admin/kelola_jurusan/tambah', $data);
@@ -264,7 +264,7 @@ class Admin extends CI_Controller
         if ($this->form_validation->run() == FALSE) {
             $this->tambahJurusan();
         } else {
-            $this->kelola_prodi_model->insertDataJurusan();
+            $this->Kelola_prodi_model->insertDataJurusan();
             $this->session->set_flashdata('message', '<div class="alert alert-primary" role="alert"><strong>Berhasil Ditambahkan!</strong></div>');
             redirect('jurusan');
         }
@@ -278,8 +278,8 @@ class Admin extends CI_Controller
         }
 
         $data['judul'] = 'Edit Jurusan';
-        $data['user'] = $this->auth_model->getDataLoggedIn($_SESSION['id_user']);
-        $data['kelola_jurusan'] = $this->kelola_prodi_model->readDataJurusan($id);
+        $data['user'] = $this->Auth_model->getDataLoggedIn($_SESSION['id_user']);
+        $data['kelola_jurusan'] = $this->Kelola_prodi_model->readDataJurusan($id);
 
         $this->load->view('templates/header', $data);
         $this->load->view('pages_admin/kelola_jurusan/edit', $data);
@@ -293,7 +293,7 @@ class Admin extends CI_Controller
         if ($this->form_validation->run() == FALSE) {
             $this->editJurusan($id);
         } else {
-            $this->kelola_prodi_model->updateDataJurusan($id);
+            $this->Kelola_prodi_model->updateDataJurusan($id);
             $this->session->set_flashdata('message', '<div class="alert alert-warning" role="alert"><strong>Berhasil Diubah!</strong></div>');
             redirect('jurusan');
         }
@@ -306,9 +306,9 @@ class Admin extends CI_Controller
             redirect('/');
         }
 
-        $data['user'] = $this->auth_model->getDataLoggedIn($_SESSION['id_user']);
+        $data['user'] = $this->Auth_model->getDataLoggedIn($_SESSION['id_user']);
 
-        $this->kelola_prodi_model->deleteDataJurusan($id);
+        $this->Kelola_prodi_model->deleteDataJurusan($id);
         $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert"><strong>Berhasil Dihapus!</strong></div>');
         redirect('jurusan');
     }
@@ -321,8 +321,8 @@ class Admin extends CI_Controller
         }
 
         $data['judul'] = 'Jenis Surat';
-        $data['user'] = $this->auth_model->getDataLoggedIn($_SESSION['id_user']);
-        $data['jenis_surat'] = $this->kelola_jenis_surat_model->getDataJenisSurat();
+        $data['user'] = $this->Auth_model->getDataLoggedIn($_SESSION['id_user']);
+        $data['jenis_surat'] = $this->Kelola_jenis_surat_model->getDataJenisSurat();
 
         $this->load->view('templates/header', $data);
         $this->load->view('pages_admin/jenis_surat', $data);
@@ -337,7 +337,7 @@ class Admin extends CI_Controller
         }
 
         $data['judul'] = 'Tambah Jenis Surat';
-        $data['user'] = $this->auth_model->getDataLoggedIn($_SESSION['id_user']);
+        $data['user'] = $this->Auth_model->getDataLoggedIn($_SESSION['id_user']);
 
         $this->load->view('templates/header', $data);
         $this->load->view('pages_admin/kelola_jenis_surat/tambah', $data);
@@ -351,7 +351,7 @@ class Admin extends CI_Controller
         if ($this->form_validation->run() == FALSE) {
             $this->tambahJenisSurat();
         } else {
-            $this->kelola_jenis_surat_model->insertDataJenisSurat();
+            $this->Kelola_jenis_surat_model->insertDataJenisSurat();
             $this->session->set_flashdata('message', '<div class="alert alert-primary" role="alert"><strong>Berhasil Ditambahkan!</strong></div>');
             redirect('jenisSurat');
         }
@@ -365,8 +365,8 @@ class Admin extends CI_Controller
         }
 
         $data['judul'] = 'Edit Jenis Surat';
-        $data['user'] = $this->auth_model->getDataLoggedIn($_SESSION['id_user']);
-        $data['jenis_surat'] = $this->kelola_jenis_surat_model->readDataJenisSurat($id);
+        $data['user'] = $this->Auth_model->getDataLoggedIn($_SESSION['id_user']);
+        $data['jenis_surat'] = $this->Kelola_jenis_surat_model->readDataJenisSurat($id);
         $data['role_access'] = [
             'Dosen',
             'Kaprodi'
@@ -384,7 +384,7 @@ class Admin extends CI_Controller
         if ($this->form_validation->run() == FALSE) {
             $this->editJenisSurat($id);
         } else {
-            $this->kelola_jenis_surat_model->updateDataJenisSurat($id);
+            $this->Kelola_jenis_surat_model->updateDataJenisSurat($id);
             $this->session->set_flashdata('message', '<div class="alert alert-warning" role="alert"><strong>Berhasil Diubah!</strong></div>');
             redirect('jenisSurat');
         }
@@ -397,9 +397,9 @@ class Admin extends CI_Controller
             redirect('/');
         }
 
-        $data['user'] = $this->auth_model->getDataLoggedIn($_SESSION['id_user']);
+        $data['user'] = $this->Auth_model->getDataLoggedIn($_SESSION['id_user']);
 
-        $this->kelola_jenis_surat_model->deleteDataJenisSurat($id);
+        $this->Kelola_jenis_surat_model->deleteDataJenisSurat($id);
         $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert"><strong>Berhasil Dihapus!</strong></div>');
         redirect('jenisSurat');
     }

@@ -174,15 +174,15 @@
                                             <input type="text" class="form-control" name="nip" id="nip" autocomplete="off" value="<?= $kelola_user['nip']; ?>">
                                             <?= form_error('nip'); ?>
                                         </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg">
+                                    <div class="px-4 mt-4">
                                         <div class="form-group">
                                             <label for="pangkat">Pangkat</label>
                                             <input type="text" class="form-control" name="pangkat" id="pangkat" autocomplete="off" value="<?= $kelola_user['pangkat']; ?>">
                                             <?= form_error('pangkat'); ?>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg">
-                                    <div class="px-4 mt-4">
                                         <div class="form-group">
                                             <label for="golongan">Golongan</label>
                                             <input type="text" class="form-control" name="golongan" id="golongan" autocomplete="off" value="<?= $kelola_user['golongan']; ?>">

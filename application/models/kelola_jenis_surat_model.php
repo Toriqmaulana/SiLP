@@ -1,6 +1,6 @@
 <?php
 
-class kelola_jenis_surat_model extends CI_Model
+class Kelola_jenis_surat_model extends CI_Model
 {
     public function insertDataJenisSurat()
     {

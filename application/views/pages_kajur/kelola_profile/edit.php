@@ -136,9 +136,9 @@
                             <div class="row">
                                 <div class="col-lg">
                                     <div class="p-4">
-                                        <div class="form-group">
+                                        <div class="form-group" id="id_jurusan">
                                             <label for="id_jurusan">Jurusan</label>
-                                            <select class="form-control" id="id_jurusan" name="id_jurusan" autofocus>
+                                            <select class="form-control" name="id_jurusan" autofocus>
                                                 <option value=""></option>
                                                 <?php foreach ($jurusan as $j) : ?>
                                                     <?php if ($j['id'] == $kelola_user['id_jurusan']) : ?>
@@ -149,9 +149,9 @@
                                                 <?php endforeach ?>
                                             </select>
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group" id="id_prodi">
                                             <label for="id_prodi">Prodi</label>
-                                            <select class="form-control" id="id_prodi" name="id_prodi">
+                                            <select class="form-control" name="id_prodi">
                                                 <option value=""></option>
                                                 <?php foreach ($prodi as $p) : ?>
                                                     <?php if ($p['id'] == $kelola_user['id_prodi']) : ?>
@@ -165,14 +165,17 @@
                                         <div class="form-group">
                                             <label for="nama">Nama</label>
                                             <input type="text" class="form-control" name="nama" id="nama" autocomplete="off" value="<?= $kelola_user['nama'] ?>">
+                                            <?= form_error('nama'); ?>
                                         </div>
                                         <div class="form-group">
                                             <label for="nip">NIP</label>
                                             <input type="text" class="form-control" name="nip" id="nip" autocomplete="off" value="<?= $kelola_user['nip']; ?>">
+                                            <?= form_error('nip'); ?>
                                         </div>
                                         <div class="form-group">
                                             <label for="pangkat">Pangkat</label>
                                             <input type="text" class="form-control" name="pangkat" id="pangkat" autocomplete="off" value="<?= $kelola_user['pangkat']; ?>">
+                                            <?= form_error('pangkat'); ?>
                                         </div>
                                     </div>
                                 </div>
@@ -181,6 +184,7 @@
                                         <div class="form-group">
                                             <label for="golongan">Golongan</label>
                                             <input type="text" class="form-control" name="golongan" id="golongan" autocomplete="off" value="<?= $kelola_user['golongan']; ?>">
+                                            <?= form_error('golongan'); ?>
                                         </div>
                                         <div class="form-group">
                                             <label for="jabatan">Jabatan</label>
@@ -236,3 +240,60 @@
 
         </div>
         <!-- End of Main Content -->
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const roleSelect = document.getElementById('role');
+                const jurusanForm = document.getElementById('id_jurusan');
+                const prodiForm = document.getElementById('id_prodi');
+                const form = document.querySelector('form');
+
+                // Fungsi untuk mengubah tampilan form berdasarkan role
+                function toggleFormFields() {
+                    const selectedRole = roleSelect.value;
+
+                    // Menangani role Dosen dan Kaprodi
+                    if (selectedRole === 'Dosen' || selectedRole === 'Kaprodi') {
+                        jurusanForm.style.display = 'block';
+                        prodiForm.style.display = 'block';
+                    }
+                    // Menangani role Kajur
+                    else if (selectedRole === 'Kajur') {
+                        jurusanForm.style.display = 'block';
+                        prodiForm.style.display = 'none';
+                    }
+                    // Menangani role Staf, Dekan, Wadek, Kabag_TU
+                    else if (selectedRole === 'Staf' || selectedRole === 'Dekan' || selectedRole === 'Wadek' || selectedRole === 'Kabag_TU') {
+                        jurusanForm.style.display = 'none';
+                        prodiForm.style.display = 'none';
+                    } else {
+                        jurusanForm.style.display = 'none';
+                        prodiForm.style.display = 'none';
+                    }
+                }
+
+                // Panggil fungsi toggleFormFields pada saat halaman dimuat
+                toggleFormFields();
+
+                // Tambahkan event listener untuk mendeteksi perubahan pada dropdown role
+                roleSelect.addEventListener('change', function() {
+                    toggleFormFields();
+                });
+
+                // Menangani submit form
+                form.addEventListener('submit', function(e) {
+                    const selectedRole = roleSelect.value;
+
+                    // Jika role adalah Kajur, set nilai Prodi menjadi kosong
+                    if (selectedRole === 'Kajur') {
+                        document.querySelector('select[name="id_prodi"]').value = ''; // Set Prodi menjadi null
+                    }
+
+                    // Jika role adalah Staf, Dekan, Wadek, atau Kabag_TU, set nilai Jurusan dan Prodi menjadi kosong
+                    if (selectedRole === 'Staf' || selectedRole === 'Dekan' || selectedRole === 'Wadek' || selectedRole === 'Kabag_TU') {
+                        document.querySelector('select[name="id_jurusan"]').value = ''; // Set Jurusan menjadi null
+                        document.querySelector('select[name="id_prodi"]').value = ''; // Set Prodi menjadi null
+                    }
+                });
+            });
+        </script>

@@ -7,12 +7,12 @@ class Dosen extends CI_Controller
     {
         parent::__construct();
 
-        $this->load->model('auth_model');
-        $this->load->model('kelola_user_model');
-        $this->load->model('kelola_prodi_model');
-        $this->load->model('kelola_jenis_surat_model');
-        $this->load->model('kelola_surat_model');
-        $this->load->model('kelola_status_model');
+        $this->load->model('Auth_model');
+        $this->load->model('Kelola_user_model');
+        $this->load->model('Kelola_prodi_model');
+        $this->load->model('Kelola_jenis_surat_model');
+        $this->load->model('Kelola_surat_model');
+        $this->load->model('Kelola_status_model');
         $this->load->helper('date');
         $this->load->library('upload');
     }
@@ -25,23 +25,23 @@ class Dosen extends CI_Controller
         }
 
         $data['judul'] = 'Dashboard';
-        $data['user'] = $this->auth_model->getDataLoggedIn($_SESSION['id_user']);
+        $data['user'] = $this->Auth_model->getDataLoggedIn($_SESSION['id_user']);
 
         // Data statistik
-        $data['total_pengajuan'] = $this->kelola_surat_model->getAllDataJumlahPengajuan($_SESSION['id_user']);
-        $data['jumlah_terbaru'] = $this->kelola_surat_model->getDataJumlahPengajuanTerbaru($_SESSION['id_user']);
-        $data['jumlah_disetujui'] = $this->kelola_surat_model->getDataJumlahPengajuanDisetujui($_SESSION['id_user']);
-        $data['jumlah_ditolak'] = $this->kelola_surat_model->getDataJumlahPengajuanDitolak($_SESSION['id_user']);
-        $data['jumlah_diproses'] = $this->kelola_surat_model->getDataJumlahPengajuanDiproses($_SESSION['id_user']);
-        $data['jumlah_selesai'] = $this->kelola_surat_model->getDataJumlahPengajuanSelesai($_SESSION['id_user']);
+        $data['total_pengajuan'] = $this->Kelola_surat_model->getAllDataJumlahPengajuan($_SESSION['id_user']);
+        $data['jumlah_terbaru'] = $this->Kelola_surat_model->getDataJumlahPengajuanTerbaru($_SESSION['id_user']);
+        $data['jumlah_disetujui'] = $this->Kelola_surat_model->getDataJumlahPengajuanDisetujui($_SESSION['id_user']);
+        $data['jumlah_ditolak'] = $this->Kelola_surat_model->getDataJumlahPengajuanDitolak($_SESSION['id_user']);
+        $data['jumlah_diproses'] = $this->Kelola_surat_model->getDataJumlahPengajuanDiproses($_SESSION['id_user']);
+        $data['jumlah_selesai'] = $this->Kelola_surat_model->getDataJumlahPengajuanSelesai($_SESSION['id_user']);
 
         // Data untuk grafik
-        $data['labels_grafik'] = $this->kelola_surat_model->getLabelsGrafik();
-        $data['data_grafik'] = $this->kelola_surat_model->getDataGrafik($_SESSION['id_user']);
+        $data['labels_grafik'] = $this->Kelola_surat_model->getLabelsGrafik();
+        $data['data_grafik'] = $this->Kelola_surat_model->getDataGrafik($_SESSION['id_user']);
 
         // Data pengajuan terbaru
-        $data['pengajuan_terbaru'] = $this->kelola_surat_model->getDataPengajuanTerbaru($_SESSION['id_user']);
-        $data['jenis_surat'] = $this->kelola_jenis_surat_model->getDataJenisSurat();
+        $data['pengajuan_terbaru'] = $this->Kelola_surat_model->getDataPengajuanTerbaru($_SESSION['id_user']);
+        $data['jenis_surat'] = $this->Kelola_jenis_surat_model->getDataJenisSurat();
 
         $this->load->view('templates/header', $data);
         $this->load->view('pages/dosen', $data);
@@ -56,14 +56,14 @@ class Dosen extends CI_Controller
         }
 
         $data['judul'] = 'Pengajuan';
-        $data['user'] = $this->auth_model->getDataLoggedIn($_SESSION['id_user']);
-        $data['kelola_pengajuan'] = $this->kelola_surat_model->getFilterPengajuan($_SESSION['id_user']);
-        $data['status'] = $this->kelola_status_model->getAllStatus();
-        $data['jenis_surat'] = $this->kelola_jenis_surat_model->getDataJenisSurat();
+        $data['user'] = $this->Auth_model->getDataLoggedIn($_SESSION['id_user']);
+        $data['kelola_pengajuan'] = $this->Kelola_surat_model->getFilterPengajuan($_SESSION['id_user']);
+        $data['status'] = $this->Kelola_status_model->getAllStatus();
+        $data['jenis_surat'] = $this->Kelola_jenis_surat_model->getDataJenisSurat();
 
         // Tambahkan ini untuk mendapatkan data pengajuan
         foreach ($data['kelola_pengajuan'] as &$kp) {
-            $kp['status_wadek'] = $this->kelola_status_model->getDataNamaStatusWadek($kp['id']);
+            $kp['status_wadek'] = $this->Kelola_status_model->getDataNamaStatusWadek($kp['id']);
         }
 
         $this->load->view('templates/header', $data);
@@ -79,8 +79,8 @@ class Dosen extends CI_Controller
         }
 
         $data['judul'] = 'Tambah Pengajuan';
-        $data['user'] = $this->auth_model->getDataLoggedIn($_SESSION['id_user']);
-        $data['jenis_surat'] = $this->kelola_jenis_surat_model->getDataJenisSurat();
+        $data['user'] = $this->Auth_model->getDataLoggedIn($_SESSION['id_user']);
+        $data['jenis_surat'] = $this->Kelola_jenis_surat_model->getDataJenisSurat();
 
         $this->load->view('templates/header', $data);
         $this->load->view('pages_dosen/kelola_pengajuan/tambah', $data);
@@ -94,7 +94,7 @@ class Dosen extends CI_Controller
         if ($this->form_validation->run() == FALSE) {
             $this->tambahPengajuan();
         } else {
-            $this->kelola_surat_model->insertPengajuanSurat();
+            $this->Kelola_surat_model->insertPengajuanSurat();
             $this->session->set_flashdata('message', '<div class="alert alert-primary" role="alert"><strong>Berhasil Ditambahkan!</strong></div>');
             redirect('pengajuan');
         }
@@ -108,9 +108,9 @@ class Dosen extends CI_Controller
         }
 
         $data['judul'] = 'Edit Pengajuan';
-        $data['user'] = $this->auth_model->getDataLoggedIn($_SESSION['id_user']);
-        $data['kelola_pengajuan'] = $this->kelola_surat_model->readPengajuanSurat($id);
-        $data['jenis_surat'] = $this->kelola_jenis_surat_model->getDataJenisSurat();
+        $data['user'] = $this->Auth_model->getDataLoggedIn($_SESSION['id_user']);
+        $data['kelola_pengajuan'] = $this->Kelola_surat_model->readPengajuanSurat($id);
+        $data['jenis_surat'] = $this->Kelola_jenis_surat_model->getDataJenisSurat();
 
         $this->load->view('templates/header', $data);
         $this->load->view('pages_dosen/kelola_pengajuan/edit', $data);
@@ -124,7 +124,7 @@ class Dosen extends CI_Controller
         if ($this->form_validation->run() == FALSE) {
             $this->editPengajuan($id);
         } else {
-            $this->kelola_surat_model->updatePengajuanSurat($id);
+            $this->Kelola_surat_model->updatePengajuanSurat($id);
             $this->session->set_flashdata('message', '<div class="alert alert-warning" role="alert"><strong>Berhasil Diubah!</strong></div>');
             redirect('pengajuan');
         }
@@ -148,7 +148,7 @@ class Dosen extends CI_Controller
             }
 
             // Ambil data surat
-            $surat = $this->kelola_surat_model->readPengajuanSurat($surat_id);
+            $surat = $this->Kelola_surat_model->readPengajuanSurat($surat_id);
             if (!$surat) {
                 throw new Exception('Data surat tidak ditemukan');
             }
@@ -193,9 +193,9 @@ class Dosen extends CI_Controller
         }
 
         $data['judul'] = 'Detail Pengajuan';
-        $data['user'] = $this->auth_model->getDataLoggedIn($_SESSION['id_user']);
-        $data['kelola_pengajuan'] = $this->kelola_surat_model->readPengajuanSurat($id);
-        $data['jenis_surat'] = $this->kelola_jenis_surat_model->getDataJenisSurat();
+        $data['user'] = $this->Auth_model->getDataLoggedIn($_SESSION['id_user']);
+        $data['kelola_pengajuan'] = $this->Kelola_surat_model->readPengajuanSurat($id);
+        $data['jenis_surat'] = $this->Kelola_jenis_surat_model->getDataJenisSurat();
 
         $this->load->view('templates/header', $data);
         $this->load->view('pages_dosen/kelola_pengajuan/detail', $data);
@@ -209,9 +209,9 @@ class Dosen extends CI_Controller
             redirect('/');
         }
 
-        $data['user'] = $this->auth_model->getDataLoggedIn($_SESSION['id_user']);
+        $data['user'] = $this->Auth_model->getDataLoggedIn($_SESSION['id_user']);
 
-        $this->kelola_surat_model->deletePengajuanSurat($id);
+        $this->Kelola_surat_model->deletePengajuanSurat($id);
         $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert"><strong>Berhasil Dihapus!</strong></div>');
         redirect('pengajuan');
     }
@@ -224,14 +224,14 @@ class Dosen extends CI_Controller
         }
 
         $data['judul'] = 'Arsip';
-        $data['user'] = $this->auth_model->getDataLoggedIn($_SESSION['id_user']);
-        $data['kelola_pengajuan'] = $this->kelola_surat_model->getFilterPengajuan($_SESSION['id_user']);
-        $data['status'] = $this->kelola_status_model->getAllStatus();
-        $data['jenis_surat'] = $this->kelola_jenis_surat_model->getDataJenisSurat();
+        $data['user'] = $this->Auth_model->getDataLoggedIn($_SESSION['id_user']);
+        $data['kelola_pengajuan'] = $this->Kelola_surat_model->getFilterPengajuan($_SESSION['id_user']);
+        $data['status'] = $this->Kelola_status_model->getAllStatus();
+        $data['jenis_surat'] = $this->Kelola_jenis_surat_model->getDataJenisSurat();
 
         // Tambahkan ini untuk mendapatkan data pengajuan
         foreach ($data['kelola_pengajuan'] as &$kp) {
-            $kp['status_wadek'] = $this->kelola_status_model->getDataNamaStatusWadek($kp['id']);
+            $kp['status_wadek'] = $this->Kelola_status_model->getDataNamaStatusWadek($kp['id']);
         }
 
         $this->load->view('templates/header', $data);
@@ -247,11 +247,11 @@ class Dosen extends CI_Controller
         }
 
         $data['judul'] = 'Profile';
-        $data['user'] = $this->auth_model->getDataLoggedIn($_SESSION['id_user']);
+        $data['user'] = $this->Auth_model->getDataLoggedIn($_SESSION['id_user']);
         $id = $_SESSION['id_user'];
-        $data['kelola_user'] = $this->kelola_user_model->readDataUser($id);
-        $data['jurusan'] = $this->kelola_prodi_model->getDataJurusan();
-        $data['prodi'] = $this->kelola_prodi_model->getDataProdi();
+        $data['kelola_user'] = $this->Kelola_user_model->readDataUser($id);
+        $data['jurusan'] = $this->Kelola_prodi_model->getDataJurusan();
+        $data['prodi'] = $this->Kelola_prodi_model->getDataProdi();
         $data['role_user'] = [
             'Dekan',
             'Wadek',
@@ -269,14 +269,15 @@ class Dosen extends CI_Controller
 
     public function editProfile($id)
     {
-        if (!isset($_SESSION['logged_in']) || $_SESSION['role'] != 'Dosen') {
-            $this->session->set_flashdata('pesan', '<div class="text-danger text-center">Silahkan Login Dulu!</div>');
-            redirect('/');
-        }
+        $this->_rulesEditProfile();
 
-        $this->kelola_user_model->updateDataUser($id);
-        $this->session->set_flashdata('message', '<div class="alert alert-warning mb-0" role="alert"><strong>Berhasil Diubah!</strong></div>');
-        redirect('profile');
+        if ($this->form_validation->run() == FALSE) {
+            $this->profile();
+        } else {
+            $this->Kelola_user_model->updateDataUser($id);
+            $this->session->set_flashdata('message', '<div class="alert alert-warning mb-0" role="alert"><strong>Berhasil Diubah!</strong></div>');
+            redirect('profile');
+        }
     }
 
     public function _rulesAdd()
@@ -305,6 +306,18 @@ class Dosen extends CI_Controller
         if (empty($existing_files) && empty($_FILES['berkas_file']['name'][0])) {
             $this->form_validation->set_rules('berkas_file[]', 'Berkas file', 'required', ['required' => '%s harus dipilih!']);
         }
+
+        $this->form_validation->set_message('required', '%s harus diisi!');
+
+        $this->form_validation->set_error_delimiters('<div class="text-small text-danger">', '</div>');
+    }
+
+    public function _rulesEditProfile()
+    {
+        $this->form_validation->set_rules('nama', 'Nama', 'trim|required');
+        $this->form_validation->set_rules('nip', 'NIP', 'trim|required');
+        $this->form_validation->set_rules('pangkat', 'Pangkat', 'trim|required');
+        $this->form_validation->set_rules('golongan', 'Golongan', 'trim|required');
 
         $this->form_validation->set_message('required', '%s harus diisi!');
 

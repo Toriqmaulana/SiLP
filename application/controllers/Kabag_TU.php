@@ -7,15 +7,15 @@ class Kabag_TU extends CI_Controller
     {
         parent::__construct();
 
-        $this->load->model('auth_model');
-        $this->load->model('kelola_user_model');
-        $this->load->model('kelola_prodi_model');
-        $this->load->model('kelola_jenis_surat_model');
-        $this->load->model('kelola_surat_model');
-        $this->load->model('kelola_sm_model');
-        $this->load->model('kelola_disposisi_model');
-        $this->load->model('kelola_sk_model');
-        $this->load->model('kelola_status_model');
+        $this->load->model('Auth_model');
+        $this->load->model('Kelola_user_model');
+        $this->load->model('Kelola_prodi_model');
+        $this->load->model('Kelola_jenis_surat_model');
+        $this->load->model('Kelola_surat_model');
+        $this->load->model('Kelola_sm_model');
+        $this->load->model('Kelola_disposisi_model');
+        $this->load->model('Kelola_sk_model');
+        $this->load->model('Kelola_status_model');
         $this->load->helper('date');
     }
 
@@ -27,27 +27,27 @@ class Kabag_TU extends CI_Controller
         }
 
         $data['judul'] = 'Dashboard';
-        $data['user'] = $this->auth_model->getDataLoggedIn($_SESSION['id_user']);
+        $data['user'] = $this->Auth_model->getDataLoggedIn($_SESSION['id_user']);
 
         // Data statistik
-        $data['total_disposisi'] = $this->kelola_surat_model->getAllDataJumlahDisposisiKabagtu();
-        $data['jumlah_terbaru'] = $this->kelola_surat_model->getDataJumlahDisposisiTerbaruKabagtu();
-        $data['jumlah_diproses'] = $this->kelola_surat_model->getDataJumlahDisposisiDiprosesKabagtu();
-        $data['jumlah_selesai'] = $this->kelola_surat_model->getDataJumlahDisposisiSelesaiKabagtu();
+        $data['total_disposisi'] = $this->Kelola_surat_model->getAllDataJumlahDisposisiKabagtu();
+        $data['jumlah_terbaru'] = $this->Kelola_surat_model->getDataJumlahDisposisiTerbaruKabagtu();
+        $data['jumlah_diproses'] = $this->Kelola_surat_model->getDataJumlahDisposisiDiprosesKabagtu();
+        $data['jumlah_selesai'] = $this->Kelola_surat_model->getDataJumlahDisposisiSelesaiKabagtu();
 
         // Data untuk grafik
-        $data['labels_grafik'] = $this->kelola_surat_model->getLabelsGrafik();
-        $data['data_grafik'] = $this->kelola_surat_model->getDataGrafikKabagtu();
+        $data['labels_grafik'] = $this->Kelola_surat_model->getLabelsGrafik();
+        $data['data_grafik'] = $this->Kelola_surat_model->getDataGrafikKabagtu();
 
         // Data disposisi terbaru
-        $data['disposisi_terbaru'] = $this->kelola_surat_model->getDataDisposisiTerbaruKabagtu();
-        $data['jenis_surat'] = $this->kelola_jenis_surat_model->getDataJenisSurat();
+        $data['disposisi_terbaru'] = $this->Kelola_surat_model->getDataDisposisiTerbaruKabagtu();
+        $data['jenis_surat'] = $this->Kelola_jenis_surat_model->getDataJenisSurat();
 
         // Tambahkan ini untuk mendapatkan data pengajuan
         if (!empty($data['disposisi_terbaru'])) {
             foreach ($data['disposisi_terbaru'] as &$d) {
-                $d['pengajuan'] = $this->kelola_surat_model->getDataPengajuan($d['id']);
-                $d['status_wadek'] = $this->kelola_status_model->getDataNamaStatusWadek($d['id']);
+                $d['pengajuan'] = $this->Kelola_surat_model->getDataPengajuan($d['id']);
+                $d['status_wadek'] = $this->Kelola_status_model->getDataNamaStatusWadek($d['id']);
             }
         }
 
@@ -64,15 +64,15 @@ class Kabag_TU extends CI_Controller
         }
 
         $data['judul'] = 'Disposisi';
-        $data['user'] = $this->auth_model->getDataLoggedIn($_SESSION['id_user']);
-        $data['kelola_pengajuan'] = $this->kelola_surat_model->getFilterAllDisposisi();
-        $data['status'] = $this->kelola_status_model->getAllStatus();
-        $data['jenis_surat'] = $this->kelola_jenis_surat_model->getDataJenisSurat();
+        $data['user'] = $this->Auth_model->getDataLoggedIn($_SESSION['id_user']);
+        $data['kelola_pengajuan'] = $this->Kelola_surat_model->getFilterAllDisposisi();
+        $data['status'] = $this->Kelola_status_model->getAllStatus();
+        $data['jenis_surat'] = $this->Kelola_jenis_surat_model->getDataJenisSurat();
 
         // Tambahkan ini untuk mendapatkan data pengajuan
         foreach ($data['kelola_pengajuan'] as &$kp) {
-            $kp['pengajuan'] = $this->kelola_surat_model->getDataPengajuan($kp['id']);
-            $kp['status_wadek'] = $this->kelola_status_model->getDataNamaStatusWadek($kp['id']);
+            $kp['pengajuan'] = $this->Kelola_surat_model->getDataPengajuan($kp['id']);
+            $kp['status_wadek'] = $this->Kelola_status_model->getDataNamaStatusWadek($kp['id']);
         }
 
         $this->load->view('templates/header', $data);
@@ -88,10 +88,10 @@ class Kabag_TU extends CI_Controller
         }
 
         $data['judul'] = 'Detail Surat Masuk';
-        $data['user'] = $this->auth_model->getDataLoggedIn($_SESSION['id_user']);
-        $data['kelola_sm'] = $this->kelola_sm_model->readSuratMasuk($id);
+        $data['user'] = $this->Auth_model->getDataLoggedIn($_SESSION['id_user']);
+        $data['kelola_sm'] = $this->Kelola_sm_model->readSuratMasuk($id);
 
-        $data_sm = $this->kelola_sm_model->getDataSuratMasuk($id);
+        $data_sm = $this->Kelola_sm_model->getDataSuratMasuk($id);
         $data['nama'] = $data_sm['nama'];
         $data['nip'] = $data_sm['nip'];
         $data['prodi'] = $data_sm['nama_prodi'];
@@ -116,14 +116,14 @@ class Kabag_TU extends CI_Controller
         }
 
         $data['judul'] = 'Tambah Disposisi';
-        $data['user'] = $this->auth_model->getDataLoggedIn($_SESSION['id_user']);
-        $data['kelola_disposisi'] = $this->kelola_disposisi_model->readDisposisi($id);
-        $data['status'] = $this->kelola_status_model->getAllStatus();
+        $data['user'] = $this->Auth_model->getDataLoggedIn($_SESSION['id_user']);
+        $data['kelola_disposisi'] = $this->Kelola_disposisi_model->readDisposisi($id);
+        $data['status'] = $this->Kelola_status_model->getAllStatus();
 
-        $data_pengajuan = $this->kelola_surat_model->getDataPengajuan($id);
+        $data_pengajuan = $this->Kelola_surat_model->getDataPengajuan($id);
         $data['prodi'] = $data_pengajuan['nama_prodi'];
 
-        $status_wadek = $this->kelola_status_model->getDataNamaStatusWadek($id);
+        $status_wadek = $this->Kelola_status_model->getDataNamaStatusWadek($id);
         $data['status_wadek'] = $status_wadek['nama_status'];
 
         $this->load->view('templates/header', $data);
@@ -138,7 +138,7 @@ class Kabag_TU extends CI_Controller
         if ($this->form_validation->run() == FALSE) {
             $this->tambahDisposisiKabagtu($id);
         } else {
-            $this->kelola_disposisi_model->insertDataDisposisiKabagtu($id);
+            $this->Kelola_disposisi_model->insertDataDisposisiKabagtu($id);
             $this->session->set_flashdata('message', '<div class="alert alert-primary" role="alert"><strong>Berhasil Ditambahkan!</strong></div>');
             redirect('disposisiKabagtu');
         }
@@ -152,10 +152,10 @@ class Kabag_TU extends CI_Controller
         }
 
         $data['judul'] = 'Detail Surat Masuk';
-        $data['user'] = $this->auth_model->getDataLoggedIn($_SESSION['id_user']);
-        $data['kelola_sm'] = $this->kelola_sm_model->readSuratMasuk($id);
+        $data['user'] = $this->Auth_model->getDataLoggedIn($_SESSION['id_user']);
+        $data['kelola_sm'] = $this->Kelola_sm_model->readSuratMasuk($id);
 
-        $data_sm = $this->kelola_sm_model->getDataSuratMasuk($id);
+        $data_sm = $this->Kelola_sm_model->getDataSuratMasuk($id);
         $data['nama'] = $data_sm['nama'];
         $data['nip'] = $data_sm['nip'];
         $data['prodi'] = $data_sm['nama_prodi'];
@@ -180,14 +180,14 @@ class Kabag_TU extends CI_Controller
         }
 
         $data['judul'] = 'Edit Disposisi';
-        $data['user'] = $this->auth_model->getDataLoggedIn($_SESSION['id_user']);
-        $data['kelola_disposisi'] = $this->kelola_disposisi_model->readDisposisi($id);
-        $data['status'] = $this->kelola_status_model->getAllStatus();
+        $data['user'] = $this->Auth_model->getDataLoggedIn($_SESSION['id_user']);
+        $data['kelola_disposisi'] = $this->Kelola_disposisi_model->readDisposisi($id);
+        $data['status'] = $this->Kelola_status_model->getAllStatus();
 
-        $data_pengajuan = $this->kelola_surat_model->getDataPengajuan($id);
+        $data_pengajuan = $this->Kelola_surat_model->getDataPengajuan($id);
         $data['prodi'] = $data_pengajuan['nama_prodi'];
 
-        $status_wadek = $this->kelola_status_model->getDataNamaStatusWadek($id);
+        $status_wadek = $this->Kelola_status_model->getDataNamaStatusWadek($id);
         $data['status_wadek'] = $status_wadek['nama_status'];
 
         $this->load->view('templates/header', $data);
@@ -202,7 +202,7 @@ class Kabag_TU extends CI_Controller
         if ($this->form_validation->run() == FALSE) {
             $this->editDisposisiKabagtu($id);
         } else {
-            $this->kelola_disposisi_model->updateDataDisposisiKabagtu($id);
+            $this->Kelola_disposisi_model->updateDataDisposisiKabagtu($id);
             $this->session->set_flashdata('message', '<div class="alert alert-warning" role="alert"><strong>Berhasil Diubah!</strong></div>');
             redirect('disposisiKabagtu');
         }
@@ -216,14 +216,14 @@ class Kabag_TU extends CI_Controller
         }
 
         $data['judul'] = 'Detail Disposisi';
-        $data['user'] = $this->auth_model->getDataLoggedIn($_SESSION['id_user']);
-        $data['kelola_disposisi'] = $this->kelola_disposisi_model->readDisposisi($id);
-        $data['status'] = $this->kelola_status_model->getAllStatus();
+        $data['user'] = $this->Auth_model->getDataLoggedIn($_SESSION['id_user']);
+        $data['kelola_disposisi'] = $this->Kelola_disposisi_model->readDisposisi($id);
+        $data['status'] = $this->Kelola_status_model->getAllStatus();
 
-        $data_pengajuan = $this->kelola_surat_model->getDataPengajuan($id);
+        $data_pengajuan = $this->Kelola_surat_model->getDataPengajuan($id);
         $data['prodi'] = $data_pengajuan['nama_prodi'];
 
-        $status_wadek = $this->kelola_status_model->getDataNamaStatusWadek($id);
+        $status_wadek = $this->Kelola_status_model->getDataNamaStatusWadek($id);
         $data['status_wadek'] = $status_wadek['nama_status'];
 
         $this->load->view('templates/header', $data);
@@ -239,14 +239,14 @@ class Kabag_TU extends CI_Controller
         }
 
         $data['judul'] = 'Print Disposisi';
-        $data['user'] = $this->auth_model->getDataLoggedIn($_SESSION['id_user']);
-        $data['kelola_disposisi'] = $this->kelola_disposisi_model->readDisposisi($id);
-        $data['status'] = $this->kelola_status_model->getAllStatus();
+        $data['user'] = $this->Auth_model->getDataLoggedIn($_SESSION['id_user']);
+        $data['kelola_disposisi'] = $this->Kelola_disposisi_model->readDisposisi($id);
+        $data['status'] = $this->Kelola_status_model->getAllStatus();
 
-        $data_pengajuan = $this->kelola_surat_model->getDataPengajuan($id);
+        $data_pengajuan = $this->Kelola_surat_model->getDataPengajuan($id);
         $data['prodi'] = $data_pengajuan['nama_prodi'];
 
-        $status_wadek = $this->kelola_status_model->getDataNamaStatusWadek($id);
+        $status_wadek = $this->Kelola_status_model->getDataNamaStatusWadek($id);
         $data['status_wadek'] = $status_wadek['nama_status'];
 
         $this->load->view('templates/header', $data);
@@ -262,15 +262,15 @@ class Kabag_TU extends CI_Controller
         }
 
         $data['judul'] = 'Arsip Disposisi';
-        $data['user'] = $this->auth_model->getDataLoggedIn($_SESSION['id_user']);
-        $data['kelola_pengajuan'] = $this->kelola_surat_model->getFilterAllDisposisi();
-        $data['status'] = $this->kelola_status_model->getAllStatus();
-        $data['jenis_surat'] = $this->kelola_jenis_surat_model->getDataJenisSurat();
+        $data['user'] = $this->Auth_model->getDataLoggedIn($_SESSION['id_user']);
+        $data['kelola_pengajuan'] = $this->Kelola_surat_model->getFilterAllDisposisi();
+        $data['status'] = $this->Kelola_status_model->getAllStatus();
+        $data['jenis_surat'] = $this->Kelola_jenis_surat_model->getDataJenisSurat();
 
         // Tambahkan ini untuk mendapatkan data pengajuan
         foreach ($data['kelola_pengajuan'] as &$kp) {
-            $kp['pengajuan'] = $this->kelola_surat_model->getDataPengajuan($kp['id']);
-            $kp['status_wadek'] = $this->kelola_status_model->getDataNamaStatusWadek($kp['id']);
+            $kp['pengajuan'] = $this->Kelola_surat_model->getDataPengajuan($kp['id']);
+            $kp['status_wadek'] = $this->Kelola_status_model->getDataNamaStatusWadek($kp['id']);
         }
 
         $this->load->view('templates/header', $data);
@@ -286,11 +286,11 @@ class Kabag_TU extends CI_Controller
         }
 
         $data['judul'] = 'Profile';
-        $data['user'] = $this->auth_model->getDataLoggedIn($_SESSION['id_user']);
+        $data['user'] = $this->Auth_model->getDataLoggedIn($_SESSION['id_user']);
         $id = $_SESSION['id_user'];
-        $data['kelola_user'] = $this->kelola_user_model->readDataUser($id);
-        $data['jurusan'] = $this->kelola_prodi_model->getDataJurusan();
-        $data['prodi'] = $this->kelola_prodi_model->getDataProdi();
+        $data['kelola_user'] = $this->Kelola_user_model->readDataUser($id);
+        $data['jurusan'] = $this->Kelola_prodi_model->getDataJurusan();
+        $data['prodi'] = $this->Kelola_prodi_model->getDataProdi();
         $data['role_user'] = [
             'Dekan',
             'Wadek',
@@ -308,14 +308,15 @@ class Kabag_TU extends CI_Controller
 
     public function editProfileKabagtu($id)
     {
-        if (!isset($_SESSION['logged_in']) || $_SESSION['role'] != 'Kabag_TU') {
-            $this->session->set_flashdata('pesan', '<div class="text-danger text-center">Silahkan Login Dulu!</div>');
-            redirect('/');
-        }
+        $this->_rulesEditProfile();
 
-        $this->kelola_user_model->updateDataUser($id);
-        $this->session->set_flashdata('message', '<div class="alert alert-warning mb-0" role="alert"><strong>Berhasil Diubah!</strong></div>');
-        redirect('profileKabagtu');
+        if ($this->form_validation->run() == FALSE) {
+            $this->profileKabagtu();
+        } else {
+            $this->Kelola_user_model->updateDataUser($id);
+            $this->session->set_flashdata('message', '<div class="alert alert-warning mb-0" role="alert"><strong>Berhasil Diubah!</strong></div>');
+            redirect('profileKabagtu');
+        }
     }
 
     public function _rulesAddDisposisi()
@@ -330,6 +331,18 @@ class Kabag_TU extends CI_Controller
     public function _rulesEditDisposisi()
     {
         $this->form_validation->set_rules('isi_disposisi_kabagtu', 'Isi disposisi', 'trim|required');
+
+        $this->form_validation->set_message('required', '%s harus diisi!');
+
+        $this->form_validation->set_error_delimiters('<div class="text-small text-danger">', '</div>');
+    }
+
+    public function _rulesEditProfile()
+    {
+        $this->form_validation->set_rules('nama', 'Nama', 'trim|required');
+        $this->form_validation->set_rules('nip', 'NIP', 'trim|required');
+        $this->form_validation->set_rules('pangkat', 'Pangkat', 'trim|required');
+        $this->form_validation->set_rules('golongan', 'Golongan', 'trim|required');
 
         $this->form_validation->set_message('required', '%s harus diisi!');
 

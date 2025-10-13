@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 08 Okt 2025 pada 17.05
+-- Waktu pembuatan: 13 Okt 2025 pada 17.28
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 7.4.29
 
@@ -402,12 +402,12 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `id_jurusan`, `id_prodi`, `username`, `password`, `nama`, `nip`, `pangkat`, `golongan`, `jabatan`, `role`, `ttd`) VALUES
-(1, '', '', 'admin', '$2a$12$h2h/jYX06iayuszUM64Rye4B0lcFU/cHrAtMDYuPDykayO20HLyUC', 'MyAdmin', '-', '-', '-', '', 'Admin', NULL),
+(1, '', '', 'adminku', '$2a$12$h2h/jYX06iayuszUM64Rye4B0lcFU/cHrAtMDYuPDykayO20HLyUC', 'MyAdmin', '-', '-', '-', '', 'Admin', NULL),
 (2, '1', '1', 'pemohon', '$2a$12$FTMUrBm8E4X/JJsnDPPhaOkAgClzbeAp3cslPbmMVhzC2wKAZq0fy', 'Nirmala Fitria Firdhausi, S.Si., M.Si', '198506252011012010', 'Penata', 'III/c', 'Dosen', 'Dosen', NULL),
 (3, '', '', 'staf', '$2a$12$b5IsU3nk13chR8jtbdNW1uwBLc07YPR50ERlmjPbtAel/oDKRk/BS', 'Khusnul Inayah, S.Ag', '197709272009012008', 'Penata Tk.I', 'III/d', 'Staf', 'Staf', NULL),
 (4, '', '', 'dekan', '$2a$12$G2XlHqfFBH2V9WKmgBJA8.j9tMbBLuXVceQv1Z8oEEsbGkUJeO2YG', 'Dr. A. Saepul Hamdani, M.Pd', '196507312000031002', 'Pembina', 'IV/a', 'Dekan', 'Dekan', '978af7d17b5174d80862f913535550da.png'),
 (5, '', '', 'wadek', '$2a$12$Y48xtuRBaY4Ptat1w8BHDO7cMTomOUgot8kLKH1bvsCbA0ZGIR6Wy', 'Dr. Moh. Hafiyusholeh, M. Si', '198002042014031001', 'Penata Tk.I', 'III/d', 'Wadek 1', 'Wadek', NULL),
-(6, '', '', 'kabagtu', '$2a$12$GAGzGhEox4QWCd3kkTMr9Odh7LiuchxWvXO66l5UWhgTJ61iwA7SO', 'Hj. Yuliati Bararah, S.Ag, MH', '197407232000032002', 'Pembina Tk.I', 'IV/b', 'Kabag TU', 'Kabag_TU', NULL),
+(6, '', '', 'kabagtu', '$2a$12$GAGzGhEox4QWCd3kkTMr9Odh7LiuchxWvXO66l5UWhgTJ61iwA7SO', 'Elly Fatmawati, S.Ag., M.M', '197304081997032002', 'Pembina Tk.I', 'IV/b', 'Kabag TU', 'Kabag_TU', NULL),
 (7, '1', '2', 'pemohon1', '$2a$12$2uiYkZYyIDqecnTo5C0V8OtI2dzT72zA8ofOe6CEv74Kl6w3UZeC6', 'Rizqi Abdi Perdanawati, MT', '198809262014032002', 'Penata Tk.I', 'III/d', 'Dosen', 'Dosen', NULL),
 (8, '', '', 'staf1', '$2y$10$axJA8s3mYttxhOrIVThtUemaMegtDn1BQEKKgSkHQULjYKRUxvPAW', 'Edika Aferi, S.E', '198202282009101003', 'Penata Muda Tk.I', 'III/b', 'Staf', 'Staf', NULL),
 (9, '', '', 'wadek1', '$2y$10$Csj31IHQb5iX2kCXrBYPout5c3YcZyPu1kdkuO4.tzIgws7/OiPO.', 'Dr. Abid Rohman, S.Ag, M.Pd.I', '197706232007101006', 'Penata Tk.I', 'III/d', 'Wadek 2', 'Wadek', NULL),
@@ -478,7 +478,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT untuk tabel `jenis_surat`
 --
 ALTER TABLE `jenis_surat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT untuk tabel `jurusan`
@@ -508,7 +508,7 @@ ALTER TABLE `surat`
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
