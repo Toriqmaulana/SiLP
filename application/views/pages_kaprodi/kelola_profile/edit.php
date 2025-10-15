@@ -227,7 +227,7 @@
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                            <label for="ttd">Upload TTD (PNG) *</label>
+                                            <label for="ttd">Upload TTD (PNG)</label>
                                             <div class="mb-2">
                                                 <small class="text-muted">Ttd saat ini: <img src="<?= base_url('uploads/ttd/' . $kelola_user['ttd']); ?>" alt="" height="100"></small>
                                             </div>

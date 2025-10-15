@@ -212,10 +212,20 @@
                                                 <?php endforeach; ?>
                                             </select>
                                         </div>
-                                        <!-- <div class="form-group">
-                                            <label for="password">Password</label>
-                                            <input type="password" class="form-control" name="password" id="password" value="$kelola_user['password']">
-                                        </div> -->
+                                        <div class="form-group">
+                                            <label for="passnow">Password Lama</label>
+                                            <input type="password" class="form-control" name="passnow" id="passnow" autocomplete="off" onfocus="showPasswordFields()" onblur="hidePasswordFields()">
+                                        </div>
+                                        <div class="form-group" id="newPasswordFields" style="display: none;">
+                                            <label for="passnew">Password Baru *</label>
+                                            <input type="password" class="form-control" name="passnew" id="passnew" autocomplete="off">
+                                            <?= form_error('passnew'); ?>
+                                        </div>
+                                        <div class="form-group" id="passconfField" style="display: none;">
+                                            <label for="passconf">Konfirmasi Password Baru *</label>
+                                            <input type="password" class="form-control" name="passconf" id="passconf" autocomplete="off">
+                                            <?= form_error('passconf'); ?>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -236,6 +246,23 @@
 
         </div>
         <!-- End of Main Content -->
+
+        <script>
+            // Fungsi untuk menampilkan form Password Baru dan Konfirmasi Password Baru
+            function showPasswordFields() {
+                document.getElementById("newPasswordFields").style.display = "block";
+                document.getElementById("passconfField").style.display = "block";
+            }
+
+            // Fungsi untuk menyembunyikan form Password Baru dan Konfirmasi Password Baru jika Password Lama tidak di-click
+            function hidePasswordFields() {
+                const passnow = document.getElementById("passnow").value;
+                if (!passnow) {
+                    document.getElementById("newPasswordFields").style.display = "none";
+                    document.getElementById("passconfField").style.display = "none";
+                }
+            }
+        </script>
 
         <script>
             document.addEventListener('DOMContentLoaded', function() {

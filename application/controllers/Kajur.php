@@ -17,6 +17,7 @@ class Kajur extends CI_Controller
         $this->load->model('Kelola_sk_model');
         $this->load->model('Kelola_status_model');
         $this->load->helper('date');
+        $this->load->library('upload');
     }
 
     public function index()
