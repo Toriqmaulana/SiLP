@@ -317,9 +317,41 @@ class Wadek extends CI_Controller
         if ($this->form_validation->run() == FALSE) {
             $this->profileWadek();
         } else {
-            $this->Kelola_user_model->updateDataUser($id);
-            $this->session->set_flashdata('message', '<div class="alert alert-warning mb-0" role="alert"><strong>Berhasil Diubah!</strong></div>');
-            redirect('profileWadek');
+            // Proses update data
+            $updateData = $this->Kelola_user_model->updateDataUser($id);
+
+            // Cek hasil update
+            if (empty($this->input->post('passnow'))) {
+                // Jika tidak ada perubahan password, hanya update data user
+                if ($updateData) {
+                    // Jika berhasil diupdate
+                    $this->session->set_flashdata('message', '<div class="alert alert-warning mb-0" role="alert"><strong>Berhasil Diubah!</strong></div>');
+                } else {
+                    // Jika ada kesalahan update data user, tampilkan pesan error
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger mb-0" role="alert"><strong>Gagal mengubah data!</strong></div>');
+                }
+                // Redirect ke halaman profile setelah update
+                redirect('profileWadek');
+            } else {
+                // Proses jika password diubah
+                $updatePassword = $this->Kelola_user_model->updateDataUserPassword($id);
+
+                if ($updatePassword == 'password_salah') {
+                    // Jika password lama salah
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger mb-0" role="alert"><strong>Password lama salah!</strong></div>');
+                } elseif ($updatePassword == 'password_sama') {
+                    // Jika password baru sama dengan password lama
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger mb-0" role="alert"><strong>Password baru tidak boleh sama dengan password lama!</strong></div>');
+                } elseif ($updatePassword == 'password_berhasil') {
+                    // Jika password berhasil diubah
+                    $this->session->set_flashdata('message', '<div class="alert alert-warning mb-0" role="alert"><strong>Berhasil Diubah!</strong></div>');
+                } else {
+                    // Jika ada kesalahan lainnya
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger mb-0" role="alert"><strong>Gagal mengubah password!</strong></div>');
+                }
+
+                redirect('profileWadek');
+            }
         }
     }
 
@@ -369,6 +401,11 @@ class Wadek extends CI_Controller
         $this->form_validation->set_rules('nip', 'NIP', 'trim|required');
         $this->form_validation->set_rules('pangkat', 'Pangkat', 'trim|required');
         $this->form_validation->set_rules('golongan', 'Golongan', 'trim|required');
+
+        if (!empty($this->input->post('passnow', true))) {
+            $this->form_validation->set_rules('passnew', 'Password baru', 'trim|required|min_length[5]', ['min_length' => '%s terlalu pendek!']);
+            $this->form_validation->set_rules('passconf', 'Konfirmasi password baru', 'trim|required|matches[passnew]', ['matches' => '%s tidak sesuai dengan password yang baru!']);
+        }
 
         $this->form_validation->set_message('required', '%s harus diisi!');
 

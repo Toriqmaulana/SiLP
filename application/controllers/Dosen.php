@@ -351,7 +351,7 @@ class Dosen extends CI_Controller
         $this->form_validation->set_rules('pangkat', 'Pangkat', 'trim|required');
         $this->form_validation->set_rules('golongan', 'Golongan', 'trim|required');
 
-        if (!empty($this->input->post('passnow'))) {
+        if (!empty($this->input->post('passnow', true))) {
             $this->form_validation->set_rules('passnew', 'Password baru', 'trim|required|min_length[5]', ['min_length' => '%s terlalu pendek!']);
             $this->form_validation->set_rules('passconf', 'Konfirmasi password baru', 'trim|required|matches[passnew]', ['matches' => '%s tidak sesuai dengan password yang baru!']);
         }
