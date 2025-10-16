@@ -152,7 +152,7 @@
                                     <div class="p-4">
                                         <div class="form-group" id="id_jurusan">
                                             <label for="id_jurusan">Jurusan</label>
-                                            <select class="form-control" name="id_jurusan" autofocus>
+                                            <select class="form-control" name="id_jurusan">
                                                 <option value=""></option>
                                                 <?php foreach ($jurusan as $j) : ?>
                                                     <?php if ($j['id'] == $kelola_user['id_jurusan']) : ?>
@@ -178,7 +178,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="nama">Nama</label>
-                                            <input type="text" class="form-control" name="nama" id="nama" autocomplete="off" value="<?= $kelola_user['nama'] ?>">
+                                            <input type="text" class="form-control" name="nama" id="nama" autocomplete="off" value="<?= $kelola_user['nama'] ?>" autofocus>
                                             <?= form_error('nama'); ?>
                                         </div>
                                         <div class="form-group">
@@ -228,16 +228,31 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="passnow">Password Lama</label>
-                                            <input type="password" class="form-control" name="passnow" id="passnow" autocomplete="off" onfocus="showPasswordFields()" onblur="hidePasswordFields()">
+                                            <div class="input-group">
+                                                <input type="password" class="form-control" name="passnow" id="passnow" autocomplete="off" onfocus="showPasswordFields()" onblur="hidePasswordFields()">
+                                                <span class="input-group-text" onclick="togglePassword('passnow', 'toggleIcon')" style="cursor: pointer;">
+                                                    <i class="fas fa-fw fa-eye-slash" id="toggleIcon"></i>
+                                                </span>
+                                            </div>
                                         </div>
                                         <div class="form-group" id="newPasswordFields" style="display: none;">
                                             <label for="passnew">Password Baru *</label>
-                                            <input type="password" class="form-control" name="passnew" id="passnew" autocomplete="off">
+                                            <div class="input-group">
+                                                <input type="password" class="form-control" name="passnew" id="passnew" autocomplete="off">
+                                                <span class="input-group-text" onclick="togglePassword('passnew', 'toggleIcon1')" style="cursor: pointer;">
+                                                    <i class="fas fa-fw fa-eye-slash" id="toggleIcon1"></i>
+                                                </span>
+                                            </div>
                                             <?= form_error('passnew'); ?>
                                         </div>
                                         <div class="form-group" id="passconfField" style="display: none;">
                                             <label for="passconf">Konfirmasi Password Baru *</label>
-                                            <input type="password" class="form-control" name="passconf" id="passconf" autocomplete="off">
+                                            <div class="input-group">
+                                                <input type="password" class="form-control" name="passconf" id="passconf" autocomplete="off">
+                                                <span class="input-group-text" onclick="togglePassword('passconf', 'toggleIcon2')" style="cursor: pointer;">
+                                                    <i class="fas fa-fw fa-eye-slash" id="toggleIcon2"></i>
+                                                </span>
+                                            </div>
                                             <?= form_error('passconf'); ?>
                                         </div>
                                     </div>
@@ -333,4 +348,23 @@
                     }
                 });
             });
+        </script>
+
+        <script>
+            // Fungsi untuk menampilkan atau menyembunyikan password
+            function togglePassword(fieldId, iconId) {
+                const passwordField = document.getElementById(fieldId);
+                const toggleIcon = document.getElementById(iconId);
+
+                // Toggle password visibility
+                if (passwordField.type === "password") {
+                    passwordField.type = "text"; // Show password
+                    toggleIcon.classList.remove("fa-eye-slash");
+                    toggleIcon.classList.add("fa-eye");
+                } else {
+                    passwordField.type = "password"; // Hide password
+                    toggleIcon.classList.remove("fa-eye");
+                    toggleIcon.classList.add("fa-eye-slash");
+                }
+            }
         </script>

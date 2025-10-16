@@ -216,7 +216,7 @@
                                             <label for="passnow">Password Lama</label>
                                             <div class="input-group">
                                                 <input type="password" class="form-control" name="passnow" id="passnow" autocomplete="off" onfocus="showPasswordFields()" onblur="hidePasswordFields()">
-                                                <span class="input-group-text" onclick="togglePassword()" style="cursor: pointer;">
+                                                <span class="input-group-text" onclick="togglePassword('passnow', 'toggleIcon')" style="cursor: pointer;">
                                                     <i class="fas fa-fw fa-eye-slash" id="toggleIcon"></i>
                                                 </span>
                                             </div>
@@ -225,7 +225,7 @@
                                             <label for="passnew">Password Baru *</label>
                                             <div class="input-group">
                                                 <input type="password" class="form-control" name="passnew" id="passnew" autocomplete="off">
-                                                <span class="input-group-text" onclick="togglePassword1()" style="cursor: pointer;">
+                                                <span class="input-group-text" onclick="togglePassword('passnew', 'toggleIcon1')" style="cursor: pointer;">
                                                     <i class="fas fa-fw fa-eye-slash" id="toggleIcon1"></i>
                                                 </span>
                                             </div>
@@ -235,7 +235,7 @@
                                             <label for="passconf">Konfirmasi Password Baru *</label>
                                             <div class="input-group">
                                                 <input type="password" class="form-control" name="passconf" id="passconf" autocomplete="off">
-                                                <span class="input-group-text" onclick="togglePassword2()" style="cursor: pointer;">
+                                                <span class="input-group-text" onclick="togglePassword('passconf', 'toggleIcon2')" style="cursor: pointer;">
                                                     <i class="fas fa-fw fa-eye-slash" id="toggleIcon2"></i>
                                                 </span>
                                             </div>
@@ -337,43 +337,20 @@
         </script>
 
         <script>
-            function togglePassword() {
-                const passwordField = document.getElementById("passnow");
-                const toggleIcon = document.getElementById("toggleIcon");
+            // Fungsi untuk menampilkan atau menyembunyikan password
+            function togglePassword(fieldId, iconId) {
+                const passwordField = document.getElementById(fieldId);
+                const toggleIcon = document.getElementById(iconId);
+
+                // Toggle password visibility
                 if (passwordField.type === "password") {
-                    passwordField.type = "text";
+                    passwordField.type = "text"; // Show password
                     toggleIcon.classList.remove("fa-eye-slash");
                     toggleIcon.classList.add("fa-eye");
                 } else {
-                    passwordField.type = "password";
+                    passwordField.type = "password"; // Hide password
                     toggleIcon.classList.remove("fa-eye");
                     toggleIcon.classList.add("fa-eye-slash");
-                }
-            }
-            function togglePassword1() {
-                const newPasswordField = document.getElementById("passnew");
-                const toggleIcon1 = document.getElementById("toggleIcon1");
-                if (newPasswordField.type === "password") {
-                    newPasswordField.type = "text";
-                    toggleIcon1.classList.remove("fa-eye-slash");
-                    toggleIcon1.classList.add("fa-eye");
-                } else {
-                    newPasswordField.type = "password";
-                    toggleIcon1.classList.remove("fa-eye");
-                    toggleIcon1.classList.add("fa-eye-slash");
-                }
-            }
-            function togglePassword2() {
-                const confPasswordField = document.getElementById("passconf");
-                const toggleIcon2 = document.getElementById("toggleIcon2");
-                if (confPasswordField.type === "password") {
-                    confPasswordField.type = "text";
-                    toggleIcon2.classList.remove("fa-eye-slash");
-                    toggleIcon2.classList.add("fa-eye");
-                } else {
-                    confPasswordField.type = "password";
-                    toggleIcon2.classList.remove("fa-eye");
-                    toggleIcon2.classList.add("fa-eye-slash");
                 }
             }
         </script>

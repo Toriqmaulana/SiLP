@@ -143,8 +143,21 @@ class Kaprodi extends CI_Controller
         if ($this->form_validation->run() == FALSE) {
             $this->detailPengajuanKaprodi($id);
         } else {
-            $this->Kelola_surat_model->approvePengajuanSurat($id);
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"><strong>Berhasil!</strong></div>');
+            // Mendapatkan status yang dipilih dari form
+            $status = $this->input->post('status', true);
+
+            // Jika status disetujui
+            if ($status == 'Disetujui Kaprodi') {
+                $this->Kelola_surat_model->approvePengajuanSurat($id);
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"><strong>Berhasil Disetujui!</strong></div>');
+            }
+
+            // Jika status ditolak
+            if ($status == 'Ditolak Kaprodi') {
+                $this->Kelola_surat_model->approvePengajuanSurat($id);
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert"><strong>Berhasil Ditolak!</strong></div>');
+            }
+
             redirect('suratKaprodi');
         }
     }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 13 Okt 2025 pada 17.28
+-- Waktu pembuatan: 16 Okt 2025 pada 16.59
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 7.4.29
 
@@ -266,7 +266,18 @@ INSERT INTO `status` (`id`, `id_pengajuan_surat`, `id_user`, `status`, `update_s
 (144, '19', '22', 'Surat Pengantar Selesai Dibuat Kaprodi', '2025-10-02 20:30:21'),
 (145, '19', '15', 'Disetujui Kajur', '2025-10-02 20:31:33'),
 (146, '9', '3', 'Surat Masih Ditandatangani Dekan', '2025-10-05 09:52:14'),
-(147, '9', '3', 'Surat Selesai', '2025-10-05 10:09:14');
+(147, '9', '3', 'Surat Selesai', '2025-10-05 10:09:14'),
+(148, '27', '12', 'Diajukan Ke Prodi', '2025-10-14 19:17:45'),
+(149, '27', '14', 'Disetujui Kaprodi', '2025-10-16 20:24:22'),
+(150, '27', '14', 'Surat Pengantar Selesai Dibuat Kaprodi', '2025-10-16 21:11:20'),
+(151, '27', '15', 'Disetujui Kajur', '2025-10-16 21:16:53'),
+(152, '27', '3', 'Lembar Disposisi Diteruskan Ke Dekan', '2025-10-16 21:23:52'),
+(155, '27', '4', 'Lembar Disposisi Diteruskan Ke Wadek 1, Wadek 2', '2025-10-16 21:31:44'),
+(156, '27', '5', 'Lembar Disposisi Diteruskan Ke Kabag TU', '2025-10-16 21:33:33'),
+(157, '27', '9', 'Lembar Disposisi Diteruskan Ke Kabag TU', '2025-10-16 21:34:50'),
+(158, '27', '6', 'Surat Masih Dicetak Staf', '2025-10-16 21:38:49'),
+(159, '27', '3', 'Surat Masih Ditandatangani Dekan', '2025-10-16 21:46:10'),
+(160, '27', '3', 'Surat Selesai', '2025-10-16 21:47:57');
 
 -- --------------------------------------------------------
 
@@ -374,7 +385,8 @@ INSERT INTO `surat` (`id`, `id_pemohon`, `id_jurusan`, `id_prodi`, `nomor_urut_p
 (23, '16', '1', '1', '01', '2025-07-28 21:05:27', 'Permohonan Surat Keputusan Tugas Mengajar Dosen', NULL, NULL, '8d35b0f1600377efbbe1c8a48f7d65fb.pdf,6f91ab0d9510a807807740e40d4be0a1.pdf,4cf918456399204bbb09f1fedc894140.pdf', '3', 'Surat Pengantar Selesai Dibuat Kaprodi', NULL, NULL, '16', 'BIO/01/10/2025', '2025-07-28 21:05:27', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tempor eros vel enim dapibus, vitae aliquet libero sagittis. Praesent condimentum condimentum urna, eu consequat libero porttitor ut. Sed massa felis, porta vel auctor at, scelerisque sed quam. Nulla justo sapien, tempus nec elit eleifend, tempus elementum sem. Sed tincidunt arcu id ex viverra sollicitudin sit amet tincidunt leo. Integer tincidunt metus non lacus dapibus, et interdum dui pretium. Sed fringilla egestas semper. Aliquam pulvinar elit et purus commodo viverra nec id odio. Aliquam fermentum interdum nibh, et vestibulum dolor vestibulum vitae. Nunc sed libero vel erat vulputate fermentum vel in massa. Ut posuere quam eu pulvinar congue. Duis eros nulla, egestas ac tortor a, pellentesque tristique nunc.</p>\r\n<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tempor eros vel enim dapibus, vitae aliquet libero sagittis. Praesent condimentum condimentum urna, eu consequat libero porttitor ut. Sed massa felis, porta vel auctor at, scelerisque sed quam. Nulla justo sapien, tempus nec elit eleifend, tempus elementum sem. Sed tincidunt arcu id ex viverra sollicitudin sit amet tincidunt leo. Integer tincidunt metus non lacus dapibus, et interdum dui pretium. Sed fringilla egestas semper. Aliquam pulvinar elit et purus commodo viverra nec id odio. Aliquam fermentum interdum nibh, et vestibulum dolor vestibulum vitae. Nunc sed libero vel erat vulputate fermentum vel in massa. Ut posuere quam eu pulvinar congue. Duis eros nulla, egestas ac tortor a, pellentesque tristique nunc.</p>', '17', '1', NULL, NULL, NULL, NULL, '0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (24, '2', '1', '1', '06', '2025-07-30 13:57:06', 'Permohonan Surat Tugas Pembimbing Lomba', 'Malang', '2025-07-31', 'b86488009f28989b760183839cfd1ad6.pdf,3b4ee469d82fa30bb9e92eca1dcc5fea.pdf,0e276d93484f391c661b74ce1f1f7eab.pdf', '1,2', 'Surat Selesai', '', '', '16', 'B/06/07/2025', '2025-07-30 13:59:11', '<p>pokok surat</p>', '17', '1', '3', '12', '2025-07-30 14:02:17', 'Permohonan ST Pembimbing Lomba', '1', '5,9,19', 'buatkan ST pembimbing lomba', 'wadek 1', 'wadek 2', 'wadek 3', 'kabagtu', 'Dekan', 'Wadek 1', 'Wadek 2', 'Wadek 3', 'Kabag TU', '3', '2025-07-30 14:09:26', 'Pt-12/Un.07/07/D/KP.01.1/ST/07/2025', 'Pt-12/Un.07/07/PPK/KP.01.1/SPD/07/2025', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', '73cac1eac9f67bbb1605309481ead48b.pdf', '499ee36e6d57fe42221b85e9e916409e.pdf', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (25, '25', '2', '4', '01', '2025-09-25 17:23:33', 'Permohonan Surat Tugas Mengikuti Workshop', 'Jambi', '2025-09-29', '9c3b1a2048f9a2576c501568cdf27312.pdf', '1,2', 'Diajukan Ke Prodi', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, NULL, NULL, NULL, '0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(26, '12', '2', '6', '04', '2025-09-30 10:41:00', 'Surat Meeting', 'Jakarta', '2025-09-30', '7b8491df6034b121bac1f07a97f65b4d.pdf', '1,2', 'Surat Selesai', '', '', '14', 'SI/04/09/2025', '2025-09-30 10:43:18', '<p>Acc</p>', '15', '1', '3', '13', '2025-09-30 10:46:45', 'Acc', '1', '5', 'Acc', 'Acc', NULL, NULL, 'Approve', 'Dekan', 'Wadek 1', NULL, NULL, 'Kabag TU', '3', '2025-09-30 10:53:23', 'Pt-13/Un.07/07/D/KP.01.1/ST/09/2025', 'Pt-13/Un.07/07/PPK/KP.01.1/SPD/09/2025', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', 'a734d711069b64ee21ae4aeac8284797.pdf', '5e1b93f4bee4b80f21f902452200367a.pdf', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(26, '12', '2', '6', '04', '2025-09-30 10:41:00', 'Surat Meeting', 'Jakarta', '2025-09-30', '7b8491df6034b121bac1f07a97f65b4d.pdf', '1,2', 'Surat Selesai', '', '', '14', 'SI/04/09/2025', '2025-09-30 10:43:18', '<p>Acc</p>', '15', '1', '3', '13', '2025-09-30 10:46:45', 'Acc', '1', '5', 'Acc', 'Acc', NULL, NULL, 'Approve', 'Dekan', 'Wadek 1', NULL, NULL, 'Kabag TU', '3', '2025-09-30 10:53:23', 'Pt-13/Un.07/07/D/KP.01.1/ST/09/2025', 'Pt-13/Un.07/07/PPK/KP.01.1/SPD/09/2025', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', 'a734d711069b64ee21ae4aeac8284797.pdf', '5e1b93f4bee4b80f21f902452200367a.pdf', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(27, '12', '2', '6', '05', '2025-10-14 19:17:45', 'Surat Pembimbing Workshop', 'Bandung', '2025-10-18', '351f416204f192ecc071f17addc2a881.pdf', '1,2', 'Surat Selesai', '', '', '14', 'SI/05/10/2025', '2025-10-16 21:11:20', '<p style=\"text-align: justify;\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam lobortis vehicula massa, ut pellentesque nisi consectetur sed. Aliquam at ipsum iaculis, pellentesque nulla quis, semper magna. Proin ultricies porttitor dolor, quis maximus nibh commodo ac. Mauris fermentum lorem lectus, nec vulputate sapien suscipit non. Nam volutpat, tortor ac ullamcorper elementum, massa tellus suscipit odio, in molestie magna lorem posuere sem. Maecenas purus libero, luctus egestas odio sed, porta malesuada dui. Aenean faucibus sodales pharetra. Cras vel ex vitae purus placerat scelerisque. Praesent ligula metus, pulvinar sed rhoncus vel, consequat ut arcu. Sed lobortis est et sem luctus, sit amet feugiat neque maximus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Phasellus vel lorem at ipsum tempus egestas. Fusce sodales elit at leo sodales, sit amet ullamcorper tellus pharetra. Duis quis enim fermentum, dictum velit pellentesque, mollis massa.</p>', '15', '1', '3', '14', '2025-10-16 21:23:52', 'ST dan SPD Pembimbing Workshop Dosen', '1', '5,9', 'Mohon dibuatkan ST dan SPD untuk pembimbing workshop dosen', 'Mohon dibuatkan ST dan SPD', 'Mohon dibuatkan ST dan SPD', NULL, 'Segera dibuatkan ST dan SPD untuk pembimbing workshop dosen', 'Dekan', 'Wadek 1', 'Wadek 2', NULL, 'Kabag TU', '3', '2025-10-16 21:46:10', 'Pt-14/Un.07/07/D/KP.01.1/ST/10/2025', 'Pt-14/Un.07/07/PPK/KP.01.1/SPD/10/2025', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', '24a55aa97ae91f9689fa8873b0fcb9f3.pdf', '99d0f298f6297787fa1f6d935402fc35.pdf', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -405,7 +417,7 @@ INSERT INTO `user` (`id`, `id_jurusan`, `id_prodi`, `username`, `password`, `nam
 (1, '', '', 'adminku', '$2a$12$h2h/jYX06iayuszUM64Rye4B0lcFU/cHrAtMDYuPDykayO20HLyUC', 'MyAdmin', '-', '-', '-', '', 'Admin', NULL),
 (2, '1', '1', 'pemohon', '$2a$12$FTMUrBm8E4X/JJsnDPPhaOkAgClzbeAp3cslPbmMVhzC2wKAZq0fy', 'Nirmala Fitria Firdhausi, S.Si., M.Si', '198506252011012010', 'Penata', 'III/c', 'Dosen', 'Dosen', NULL),
 (3, '', '', 'staf', '$2a$12$b5IsU3nk13chR8jtbdNW1uwBLc07YPR50ERlmjPbtAel/oDKRk/BS', 'Khusnul Inayah, S.Ag', '197709272009012008', 'Penata Tk.I', 'III/d', 'Staf', 'Staf', NULL),
-(4, '', '', 'dekan', '$2a$12$G2XlHqfFBH2V9WKmgBJA8.j9tMbBLuXVceQv1Z8oEEsbGkUJeO2YG', 'Dr. A. Saepul Hamdani, M.Pd', '196507312000031002', 'Pembina', 'IV/a', 'Dekan', 'Dekan', '978af7d17b5174d80862f913535550da.png'),
+(4, '', '', 'dekan', '$2a$12$G2XlHqfFBH2V9WKmgBJA8.j9tMbBLuXVceQv1Z8oEEsbGkUJeO2YG', 'Dr. A. Saepul Hamdani, M.Pd', '196507312000031002', 'Pembina', 'IV/a', 'Dekan', 'Dekan', ''),
 (5, '', '', 'wadek', '$2a$12$Y48xtuRBaY4Ptat1w8BHDO7cMTomOUgot8kLKH1bvsCbA0ZGIR6Wy', 'Dr. Moh. Hafiyusholeh, M. Si', '198002042014031001', 'Penata Tk.I', 'III/d', 'Wadek 1', 'Wadek', NULL),
 (6, '', '', 'kabagtu', '$2a$12$GAGzGhEox4QWCd3kkTMr9Odh7LiuchxWvXO66l5UWhgTJ61iwA7SO', 'Elly Fatmawati, S.Ag., M.M', '197304081997032002', 'Pembina Tk.I', 'IV/b', 'Kabag TU', 'Kabag_TU', NULL),
 (7, '1', '2', 'pemohon1', '$2a$12$2uiYkZYyIDqecnTo5C0V8OtI2dzT72zA8ofOe6CEv74Kl6w3UZeC6', 'Rizqi Abdi Perdanawati, MT', '198809262014032002', 'Penata Tk.I', 'III/d', 'Dosen', 'Dosen', NULL),
@@ -419,7 +431,7 @@ INSERT INTO `user` (`id`, `id_jurusan`, `id_prodi`, `username`, `password`, `nam
 (15, '2', '', 'kajur', '$2y$10$oB3vcKXv3GbxwuI2AxTi5O6egLOJbd0gtTfeRoDeBhwZkDr7oKLr6', 'Mujib Ridwan, S.Kom., M.T', '198604272014031004', 'Penata Tk.I', 'III/d', 'Kajur', 'Kajur', '1123640447e363696996cce6b61cdf3c.png'),
 (16, '1', '1', 'kaprodi1', '$2y$10$iTav2/fAEMk.yaSnSf36euoJUSTPnn9K851fq5IbsPEHGz7UgI/Ra', 'Esti Tyastirin, M. KM', '198706242014032001', 'Penata', 'III/c', 'Kaprodi', 'Kaprodi', 'c5ed886d14f86c21e209f5c247365a06.png'),
 (17, '1', '', 'kajur1', '$2y$10$HiGLAeQ6Vo1YECUxvLaJueuYFYF7HWSkUJ2uD//ygCeAfy6rjRFK2', 'Asri Sawiji, MT', '198706262014032003', 'Penata Tk.I', 'III/d', 'Kajur', 'Kajur', '7ed974d82cdd5eb075c6495f14721ae3.png'),
-(18, '1', '2', 'kaprodi2', '$2y$10$S5DPDC/jPlZ7BXBbYS0mxu5cDcjRS9/OfK9rSBtSL6ewVscsp19xi', 'Andik Dwi Muttaqin, MT', '198204102014031001', 'Penata', 'III/c', 'Kaprodi', 'Kaprodi', '32d47d9a19ad6b2cabe8148360cbd2d1.png'),
+(18, '1', '2', 'kaprodi2', '$2y$10$EM4YLCKito0mgt799qb02OULXI6upgx0Lrc8V0iJ6eOoQ.eZ/55Qm', 'Andik Dwi Muttaqin, MT', '198204102014031001', 'Penata', 'III/c', 'Kaprodi', 'Kaprodi', '52d185a60b7ad96fa3080be64526ba82.png'),
 (19, '', '', 'wadek2', '$2y$10$VwnmRjh8.i428qQOOx7VsOA602y6yK8vImR/haMoEKB9Kpkmpwbqq', 'Dr. Khoirul Yahya, S.Ag, M.Si', '197202062007101003', 'Penata', 'III/c', 'Wadek 3', 'Wadek', NULL),
 (20, '1', '3', 'kaprodi3', '$2y$10$du2fsXhVtw7AauR3BqV00.u8Se/4bo.BbapOFrwnjh.XW6MJGQxUK', 'Yuniar Farida, MT', '197905272014032002', 'Penata Tk.I', 'III/d', 'Kaprodi', 'Kaprodi', 'dde05c280c24ee85b2b5cacb815b67fe.png'),
 (21, '2', '4', 'kaprodi4', '$2y$10$IYYuJHuVxNY3sGK3wTgkJOejTdR4163JXnPOly/G6eREEbwCBVfli', 'Dr. Rita Ernawati, MT', '198008032014032001', 'Penata', 'III/c', 'Kaprodi', 'Kaprodi', 'c43cc8805eaa8d599446be20264db165.png'),
@@ -496,19 +508,19 @@ ALTER TABLE `prodi`
 -- AUTO_INCREMENT untuk tabel `status`
 --
 ALTER TABLE `status`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=148;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=161;
 
 --
 -- AUTO_INCREMENT untuk tabel `surat`
 --
 ALTER TABLE `surat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

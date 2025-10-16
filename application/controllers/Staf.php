@@ -348,7 +348,7 @@ class Staf extends CI_Controller
             $this->tambahSuratKeluarStaf($id);
         } else {
             $this->Kelola_sk_model->insertSuratKeluar($id);
-            $this->session->set_flashdata('message', '<div class="alert alert-primary" role="alert"><strong>Berhasil Ditambahkan!</strong></div>');
+            $this->session->set_flashdata('message', '<div class="alert alert-primary" role="alert"><strong>Berhasil Diupload!</strong></div>');
             redirect('arsipSuratKeluarStaf');
         }
     }
