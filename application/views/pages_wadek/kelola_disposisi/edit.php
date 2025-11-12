@@ -233,7 +233,7 @@
 
     <div class="card-footer">
         <button type="submit" name="edit" class="btn btn-success btn-sm">
-            <i class="fas fa-fw fa-save"></i> Submit
+            <i class="fas fa-fw fa-save"></i> Simpan
         </button>
     </div>
 </form>

@@ -37,17 +37,20 @@ class Kelola_user_model extends CI_Model
         return $this->db->update('user', $data);
     }
 
-    public function updateDataUserPassword($id)
+    public function updateDataProfile($id)
     {
         $data = [
-            'id_jurusan' => $this->input->post('id_jurusan', true),
-            'id_prodi' => $this->input->post('id_prodi', true),
-            'nama' => htmlspecialchars($this->input->post('nama', true)),
-            'nip' => $this->input->post('nip', true),
-            'pangkat' => $this->input->post('pangkat', true),
-            'golongan' => $this->input->post('golongan', true),
-            'jabatan' => $this->input->post('jabatan', true),
-            'role' => $this->input->post('role', true)
+            'nama' => htmlspecialchars($this->input->post('nama', true))
+        ];
+
+        $this->db->where('id', $id);
+        return $this->db->update('user', $data);
+    }
+
+    public function updateDataProfilePassword($id)
+    {
+        $data = [
+            'nama' => htmlspecialchars($this->input->post('nama', true))
         ];
 
         // Cek password baru jika ada perubahan password lama
@@ -76,18 +79,11 @@ class Kelola_user_model extends CI_Model
         return $updateStatus ? 'password_berhasil' : 'gagal_update';
     }
 
-    public function updateDataTtd($id)
+    public function updateDataProfileTtd($id)
     {
         // Data untuk update
         $data = [
-            'id_jurusan' => $this->input->post('id_jurusan', true),
-            'id_prodi' => $this->input->post('id_prodi', true),
-            'nama' => htmlspecialchars($this->input->post('nama', true)),
-            'nip' => $this->input->post('nip', true),
-            'pangkat' => $this->input->post('pangkat', true),
-            'golongan' => $this->input->post('golongan', true),
-            'jabatan' => $this->input->post('jabatan', true),
-            'role' => $this->input->post('role', true)
+            'nama' => htmlspecialchars($this->input->post('nama', true))
         ];
 
         // Cek apakah ada file yang diupload
@@ -118,18 +114,11 @@ class Kelola_user_model extends CI_Model
         return $this->db->update('user', $data);
     }
 
-    public function updateDataTtdPassword($id)
+    public function updateDataProfileTtdPassword($id)
     {
         // Data untuk update
         $data = [
-            'id_jurusan' => $this->input->post('id_jurusan', true),
-            'id_prodi' => $this->input->post('id_prodi', true),
-            'nama' => htmlspecialchars($this->input->post('nama', true)),
-            'nip' => $this->input->post('nip', true),
-            'pangkat' => $this->input->post('pangkat', true),
-            'golongan' => $this->input->post('golongan', true),
-            'jabatan' => $this->input->post('jabatan', true),
-            'role' => $this->input->post('role', true)
+            'nama' => htmlspecialchars($this->input->post('nama', true))
         ];
 
         // Cek apakah ada file yang diupload

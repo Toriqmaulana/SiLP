@@ -2,7 +2,7 @@
 <div id="wrapper">
 
     <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">
+    <ul class="navbar-nav bg sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center">
@@ -31,7 +31,7 @@
         </div>
 
         <!-- Nav Item -->
-        <li class="nav-item">
+        <li class="nav-item active">
             <a class="nav-link" href="<?= base_url('pengguna'); ?>">
                 <i class="fas fa-fw fa-users"></i>
                 <span>Pengguna</span></a>

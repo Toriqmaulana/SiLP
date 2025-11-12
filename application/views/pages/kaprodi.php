@@ -2,7 +2,7 @@
 <div id="wrapper">
 
     <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">
+    <ul class="navbar-nav bg sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center">
@@ -16,7 +16,7 @@
         <hr class="sidebar-divider my-0">
 
         <!-- Nav Item - Dashboard -->
-        <li class="nav-item">
+        <li class="nav-item active">
             <a class="nav-link" href="<?= base_url('Kaprodi'); ?>">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Dashboard</span></a>
@@ -135,6 +135,15 @@
                         <i class="fas fa-paper-plane fa-sm fa-fw"></i> Buat Pengajuan Baru
                     </a>
                 </div>
+
+                <?php if ($user->ttd == null) : ?>
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <strong>Silahkan upload tanda tangan (TTD) terlebih dahulu melalui menu profile.</strong>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                <?php endif; ?>
 
                 <div class="row">
 

@@ -2,7 +2,7 @@
 <div id="wrapper">
 
     <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">
+    <ul class="navbar-nav bg sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center">
@@ -45,7 +45,7 @@
         </li>
 
         <!-- Nav Item -->
-        <li class="nav-item">
+        <li class="nav-item active">
             <a class="nav-link" href="<?= base_url('profileWadek'); ?>">
                 <i class="fas fa-fw fa-user"></i>
                 <span>Profile</span></a>
@@ -131,86 +131,15 @@
                     <?php endif; ?>
 
                     <!-- form start -->
-                    <form class="user" action="<?= base_url('editProfileWadek/' . $kelola_user['id']); ?>" method="post" enctype="multipart/form-data">
+                    <form class="user" action="<?= base_url('editProfileWadek/' . $kelola_user['id']); ?>" method="post">
                         <div class="card-body p-0">
                             <div class="row">
                                 <div class="col-lg">
                                     <div class="p-4">
-                                        <div class="form-group" id="id_jurusan">
-                                            <label for="id_jurusan">Jurusan</label>
-                                            <select class="form-control" name="id_jurusan">
-                                                <option value=""></option>
-                                                <?php foreach ($jurusan as $j) : ?>
-                                                    <?php if ($j['id'] == $kelola_user['id_jurusan']) : ?>
-                                                        <option value="<?= $j['id']; ?>" selected><?= $j['nama_jurusan']; ?></option>
-                                                    <?php else : ?>
-                                                        <option value="<?= $j['id']; ?>"><?= $j['nama_jurusan']; ?></option>
-                                                    <?php endif; ?>
-                                                <?php endforeach ?>
-                                            </select>
-                                        </div>
-                                        <div class="form-group" id="id_prodi">
-                                            <label for="id_prodi">Prodi</label>
-                                            <select class="form-control" name="id_prodi">
-                                                <option value=""></option>
-                                                <?php foreach ($prodi as $p) : ?>
-                                                    <?php if ($p['id'] == $kelola_user['id_prodi']) : ?>
-                                                        <option value="<?= $p['id']; ?>" selected><?= $p['nama_prodi']; ?></option>
-                                                    <?php else : ?>
-                                                        <option value="<?= $p['id']; ?>"><?= $p['nama_prodi']; ?></option>
-                                                    <?php endif; ?>
-                                                <?php endforeach ?>
-                                            </select>
-                                        </div>
                                         <div class="form-group">
                                             <label for="nama">Nama</label>
                                             <input type="text" class="form-control" name="nama" id="nama" autocomplete="off" value="<?= $kelola_user['nama'] ?>" autofocus>
                                             <?= form_error('nama'); ?>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="nip">NIP</label>
-                                            <input type="text" class="form-control" name="nip" id="nip" autocomplete="off" value="<?= $kelola_user['nip']; ?>">
-                                            <?= form_error('nip'); ?>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="pangkat">Pangkat</label>
-                                            <input type="text" class="form-control" name="pangkat" id="pangkat" autocomplete="off" value="<?= $kelola_user['pangkat']; ?>">
-                                            <?= form_error('pangkat'); ?>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg">
-                                    <div class="p-4">
-                                        <div class="form-group">
-                                            <label for="golongan">Golongan</label>
-                                            <input type="text" class="form-control" name="golongan" id="golongan" autocomplete="off" value="<?= $kelola_user['golongan']; ?>">
-                                            <?= form_error('golongan'); ?>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="jabatan">Jabatan</label>
-                                            <select class="form-control" id="jabatan" name="jabatan">
-                                                <option value="Dosen" <?= $kelola_user['jabatan'] == 'Dosen' ? 'selected' : ''; ?>>Dosen</option>
-                                                <option value="Kaprodi" <?= $kelola_user['jabatan'] == 'Kaprodi' ? 'selected' : ''; ?>>Kaprodi</option>
-                                                <option value="Kajur" <?= $kelola_user['jabatan'] == 'Kajur' ? 'selected' : ''; ?>>Kajur</option>
-                                                <option value="Dekan" <?= $kelola_user['jabatan'] == 'Dekan' ? 'selected' : ''; ?>>Dekan</option>
-                                                <option value="Wadek 1" <?= $kelola_user['jabatan'] == 'Wadek 1' ? 'selected' : ''; ?>>Wadek 1</option>
-                                                <option value="Wadek 2" <?= $kelola_user['jabatan'] == 'Wadek 2' ? 'selected' : ''; ?>>Wadek 2</option>
-                                                <option value="Wadek 3" <?= $kelola_user['jabatan'] == 'Wadek 3' ? 'selected' : ''; ?>>Wadek 3</option>
-                                                <option value="Kabag TU" <?= $kelola_user['jabatan'] == 'Kabag TU' ? 'selected' : ''; ?>>Kabag TU</option>
-                                                <option value="Staf" <?= $kelola_user['jabatan'] == 'Staf' ? 'selected' : ''; ?>>Staf</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="role">Role</label>
-                                            <select class="form-control" name="role" id="role">
-                                                <?php foreach ($role_user as $ru) : ?>
-                                                    <?php if ($ru == $kelola_user['role']) : ?>
-                                                        <option value="<?= $ru; ?>" selected><?= $ru; ?></option>
-                                                    <?php else : ?>
-                                                        <option value="<?= $ru; ?>"><?= $ru; ?></option>
-                                                    <?php endif; ?>
-                                                <?php endforeach; ?>
-                                            </select>
                                         </div>
                                         <div class="form-group">
                                             <label for="passnow">Password Lama</label>
@@ -249,7 +178,7 @@
 
                         <div class="card-footer">
                             <button type="submit" name="edit" class="btn btn-success btn-sm">
-                                <i class="fas fa-fw fa-save"></i> Submit
+                                <i class="fas fa-fw fa-save"></i> Simpan
                             </button>
                         </div>
                     </form>
@@ -277,63 +206,6 @@
                     document.getElementById("passconfField").style.display = "none";
                 }
             }
-        </script>
-
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                const roleSelect = document.getElementById('role');
-                const jurusanForm = document.getElementById('id_jurusan');
-                const prodiForm = document.getElementById('id_prodi');
-                const form = document.querySelector('form');
-
-                // Fungsi untuk mengubah tampilan form berdasarkan role
-                function toggleFormFields() {
-                    const selectedRole = roleSelect.value;
-
-                    // Menangani role Dosen dan Kaprodi
-                    if (selectedRole === 'Dosen' || selectedRole === 'Kaprodi') {
-                        jurusanForm.style.display = 'block';
-                        prodiForm.style.display = 'block';
-                    }
-                    // Menangani role Kajur
-                    else if (selectedRole === 'Kajur') {
-                        jurusanForm.style.display = 'block';
-                        prodiForm.style.display = 'none';
-                    }
-                    // Menangani role Staf, Dekan, Wadek, Kabag_TU
-                    else if (selectedRole === 'Staf' || selectedRole === 'Dekan' || selectedRole === 'Wadek' || selectedRole === 'Kabag_TU') {
-                        jurusanForm.style.display = 'none';
-                        prodiForm.style.display = 'none';
-                    } else {
-                        jurusanForm.style.display = 'none';
-                        prodiForm.style.display = 'none';
-                    }
-                }
-
-                // Panggil fungsi toggleFormFields pada saat halaman dimuat
-                toggleFormFields();
-
-                // Tambahkan event listener untuk mendeteksi perubahan pada dropdown role
-                roleSelect.addEventListener('change', function() {
-                    toggleFormFields();
-                });
-
-                // Menangani submit form
-                form.addEventListener('submit', function(e) {
-                    const selectedRole = roleSelect.value;
-
-                    // Jika role adalah Kajur, set nilai Prodi menjadi kosong
-                    if (selectedRole === 'Kajur') {
-                        document.querySelector('select[name="id_prodi"]').value = ''; // Set Prodi menjadi null
-                    }
-
-                    // Jika role adalah Staf, Dekan, Wadek, atau Kabag_TU, set nilai Jurusan dan Prodi menjadi kosong
-                    if (selectedRole === 'Staf' || selectedRole === 'Dekan' || selectedRole === 'Wadek' || selectedRole === 'Kabag_TU') {
-                        document.querySelector('select[name="id_jurusan"]').value = ''; // Set Jurusan menjadi null
-                        document.querySelector('select[name="id_prodi"]').value = ''; // Set Prodi menjadi null
-                    }
-                });
-            });
         </script>
 
         <script>

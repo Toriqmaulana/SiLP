@@ -140,6 +140,10 @@
         .existing-files {
             margin-bottom: 15px;
         }
+
+        .bg {
+            background-color: #198754;
+        }
     </style>
 
 </head>

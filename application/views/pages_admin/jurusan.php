@@ -2,7 +2,7 @@
 <div id="wrapper">
 
     <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">
+    <ul class="navbar-nav bg sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center">
@@ -43,7 +43,7 @@
                 <span>Prodi</span></a>
         </li>
 
-        <li class="nav-item">
+        <li class="nav-item active">
             <a class="nav-link" href="<?= base_url('jurusan'); ?>">
                 <i class="fas fa-fw fa-user-tie"></i>
                 <span>Jurusan</span></a>

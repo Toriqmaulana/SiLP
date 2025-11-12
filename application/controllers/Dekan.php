@@ -291,17 +291,6 @@ class Dekan extends CI_Controller
         $data['user'] = $this->Auth_model->getDataLoggedIn($_SESSION['id_user']);
         $id = $_SESSION['id_user'];
         $data['kelola_user'] = $this->Kelola_user_model->readDataUser($id);
-        $data['jurusan'] = $this->Kelola_prodi_model->getDataJurusan();
-        $data['prodi'] = $this->Kelola_prodi_model->getDataProdi();
-        $data['role_user'] = [
-            'Dekan',
-            'Wadek',
-            'Kabag_TU',
-            'Staf',
-            'Dosen',
-            'Kaprodi',
-            'Kajur'
-        ];
 
         $this->load->view('templates/header', $data);
         $this->load->view('pages_dekan/kelola_profile/edit', $data);
@@ -316,7 +305,7 @@ class Dekan extends CI_Controller
             $this->profileDekan();
         } else {
             // Proses update data
-            $updateData = $this->Kelola_user_model->updateDataUser($id);
+            $updateData = $this->Kelola_user_model->updateDataProfile($id);
 
             // Cek hasil update
             if (empty($this->input->post('passnow'))) {
@@ -332,7 +321,7 @@ class Dekan extends CI_Controller
                 redirect('profileDekan');
             } else {
                 // Proses jika password diubah
-                $updatePassword = $this->Kelola_user_model->updateDataUserPassword($id);
+                $updatePassword = $this->Kelola_user_model->updateDataProfilePassword($id);
 
                 if ($updatePassword == 'password_salah') {
                     // Jika password lama salah
@@ -342,7 +331,8 @@ class Dekan extends CI_Controller
                     $this->session->set_flashdata('message', '<div class="alert alert-danger mb-0" role="alert"><strong>Password baru tidak boleh sama dengan password lama!</strong></div>');
                 } elseif ($updatePassword == 'password_berhasil') {
                     // Jika password berhasil diubah
-                    $this->session->set_flashdata('message', '<div class="alert alert-warning mb-0" role="alert"><strong>Berhasil Diubah!</strong></div>');
+                    session_destroy();
+                    redirect('/');
                 } else {
                     // Jika ada kesalahan lainnya
                     $this->session->set_flashdata('message', '<div class="alert alert-danger mb-0" role="alert"><strong>Gagal mengubah password!</strong></div>');
@@ -376,9 +366,6 @@ class Dekan extends CI_Controller
     public function _rulesEditProfile()
     {
         $this->form_validation->set_rules('nama', 'Nama', 'trim|required');
-        $this->form_validation->set_rules('nip', 'NIP', 'trim|required');
-        $this->form_validation->set_rules('pangkat', 'Pangkat', 'trim|required');
-        $this->form_validation->set_rules('golongan', 'Golongan', 'trim|required');
 
         if (!empty($this->input->post('passnow', true))) {
             $this->form_validation->set_rules('passnew', 'Password baru', 'trim|required|min_length[5]', ['min_length' => '%s terlalu pendek!']);
