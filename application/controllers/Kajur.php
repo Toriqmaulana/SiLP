@@ -256,6 +256,15 @@ class Kajur extends CI_Controller
     {
         $this->form_validation->set_rules('status', 'Approved', 'required');
 
+        // Mendapatkan status yang dipilih dari form
+        $status = $this->input->post('status', true);
+        // Jika status ditolak
+        if ($status == 'Ditolak Kajur') {
+            if (empty($this->input->post('alasan_kajur', true))) {
+                $this->form_validation->set_rules('alasan_kajur', 'Alasan ditolak', 'trim|required', ['required' => '%s harus diisi!']);
+            }
+        }
+
         $this->form_validation->set_message('required', '%s harus dipilih!');
 
         $this->form_validation->set_error_delimiters('<div class="text-small text-danger">', '</div>');

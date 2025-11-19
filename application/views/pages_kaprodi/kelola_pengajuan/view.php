@@ -247,6 +247,7 @@
                                         <div class="form-group" id="alasan-group" style="display: none;">
                                             <label for="alasan_kaprodi">Alasan Ditolak</label>
                                             <input type="text" class="form-control" name="alasan_kaprodi" value="" autocomplete="off">
+                                            <?= form_error('alasan_kaprodi'); ?>
                                         </div>
                                         <?php if ($kelola_pengajuan['status'] == 'Ditolak Kaprodi') : ?>
                                             <div class="form-group">

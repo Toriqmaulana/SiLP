@@ -527,9 +527,9 @@ class Kelola_surat_model extends CI_Model
             }
         }
 
-        // Filter jenis surat
+        // Filter jenis surat - menggunakan FIND_IN_SET untuk exact match
         if (!empty($jenis_surat)) {
-            $this->db->like('jenis_surat', $jenis_surat);
+            $this->db->where("FIND_IN_SET('$jenis_surat', jenis_surat) >", 0, FALSE);
         }
 
         // Filter tanggal
@@ -562,9 +562,9 @@ class Kelola_surat_model extends CI_Model
             }
         }
 
-        // Filter jenis surat
+        // Filter jenis surat - menggunakan FIND_IN_SET untuk exact match
         if (!empty($jenis_surat)) {
-            $this->db->like('jenis_surat', $jenis_surat);
+            $this->db->where("FIND_IN_SET('$jenis_surat', jenis_surat) >", 0, FALSE);
         }
 
         // Filter tanggal
@@ -597,9 +597,9 @@ class Kelola_surat_model extends CI_Model
             }
         }
 
-        // Filter jenis surat
+        // Filter jenis surat - menggunakan FIND_IN_SET untuk exact match
         if (!empty($jenis_surat)) {
-            $this->db->like('jenis_surat', $jenis_surat);
+            $this->db->where("FIND_IN_SET('$jenis_surat', jenis_surat) >", 0, FALSE);
         }
 
         // Filter tanggal
@@ -632,9 +632,9 @@ class Kelola_surat_model extends CI_Model
             }
         }
 
-        // Filter jenis surat
+        // Filter jenis surat - menggunakan FIND_IN_SET untuk exact match
         if (!empty($jenis_surat)) {
-            $this->db->like('jenis_surat', $jenis_surat);
+            $this->db->where("FIND_IN_SET('$jenis_surat', jenis_surat) >", 0, FALSE);
         }
 
         // Filter tanggal
@@ -667,9 +667,9 @@ class Kelola_surat_model extends CI_Model
             }
         }
 
-        // Filter jenis surat
+        // Filter jenis surat - menggunakan FIND_IN_SET untuk exact match
         if (!empty($jenis_surat)) {
-            $this->db->like('jenis_surat', $jenis_surat);
+            $this->db->where("FIND_IN_SET('$jenis_surat', jenis_surat) >", 0, FALSE);
         }
 
         // Filter tanggal
@@ -722,10 +722,13 @@ class Kelola_surat_model extends CI_Model
             }
         }
 
-        // Filter jenis surat
+        // Filter jenis surat - menggunakan FIND_IN_SET untuk exact match
         if (!empty($jenis_surat)) {
-            $this->db->like('jenis_surat', $jenis_surat);
+            $this->db->where("FIND_IN_SET('$jenis_surat', jenis_surat) >", 0, FALSE);
         }
+        // if (!empty($jenis_surat)) {
+        //     $this->db->like('jenis_surat', $jenis_surat);
+        // }
 
         // Filter tanggal
         if (!empty($start_date)) {

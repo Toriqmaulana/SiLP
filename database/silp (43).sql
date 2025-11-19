@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 16 Okt 2025 pada 16.59
+-- Waktu pembuatan: 14 Nov 2025 pada 13.28
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 7.4.29
 
@@ -277,7 +277,8 @@ INSERT INTO `status` (`id`, `id_pengajuan_surat`, `id_user`, `status`, `update_s
 (157, '27', '9', 'Lembar Disposisi Diteruskan Ke Kabag TU', '2025-10-16 21:34:50'),
 (158, '27', '6', 'Surat Masih Dicetak Staf', '2025-10-16 21:38:49'),
 (159, '27', '3', 'Surat Masih Ditandatangani Dekan', '2025-10-16 21:46:10'),
-(160, '27', '3', 'Surat Selesai', '2025-10-16 21:47:57');
+(160, '27', '3', 'Surat Selesai', '2025-10-16 21:47:57'),
+(161, '28', '16', 'Surat Pengantar Selesai Dibuat Kaprodi', '2025-10-24 12:50:33');
 
 -- --------------------------------------------------------
 
@@ -386,7 +387,8 @@ INSERT INTO `surat` (`id`, `id_pemohon`, `id_jurusan`, `id_prodi`, `nomor_urut_p
 (24, '2', '1', '1', '06', '2025-07-30 13:57:06', 'Permohonan Surat Tugas Pembimbing Lomba', 'Malang', '2025-07-31', 'b86488009f28989b760183839cfd1ad6.pdf,3b4ee469d82fa30bb9e92eca1dcc5fea.pdf,0e276d93484f391c661b74ce1f1f7eab.pdf', '1,2', 'Surat Selesai', '', '', '16', 'B/06/07/2025', '2025-07-30 13:59:11', '<p>pokok surat</p>', '17', '1', '3', '12', '2025-07-30 14:02:17', 'Permohonan ST Pembimbing Lomba', '1', '5,9,19', 'buatkan ST pembimbing lomba', 'wadek 1', 'wadek 2', 'wadek 3', 'kabagtu', 'Dekan', 'Wadek 1', 'Wadek 2', 'Wadek 3', 'Kabag TU', '3', '2025-07-30 14:09:26', 'Pt-12/Un.07/07/D/KP.01.1/ST/07/2025', 'Pt-12/Un.07/07/PPK/KP.01.1/SPD/07/2025', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', '73cac1eac9f67bbb1605309481ead48b.pdf', '499ee36e6d57fe42221b85e9e916409e.pdf', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (25, '25', '2', '4', '01', '2025-09-25 17:23:33', 'Permohonan Surat Tugas Mengikuti Workshop', 'Jambi', '2025-09-29', '9c3b1a2048f9a2576c501568cdf27312.pdf', '1,2', 'Diajukan Ke Prodi', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, NULL, NULL, NULL, '0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (26, '12', '2', '6', '04', '2025-09-30 10:41:00', 'Surat Meeting', 'Jakarta', '2025-09-30', '7b8491df6034b121bac1f07a97f65b4d.pdf', '1,2', 'Surat Selesai', '', '', '14', 'SI/04/09/2025', '2025-09-30 10:43:18', '<p>Acc</p>', '15', '1', '3', '13', '2025-09-30 10:46:45', 'Acc', '1', '5', 'Acc', 'Acc', NULL, NULL, 'Approve', 'Dekan', 'Wadek 1', NULL, NULL, 'Kabag TU', '3', '2025-09-30 10:53:23', 'Pt-13/Un.07/07/D/KP.01.1/ST/09/2025', 'Pt-13/Un.07/07/PPK/KP.01.1/SPD/09/2025', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', 'a734d711069b64ee21ae4aeac8284797.pdf', '5e1b93f4bee4b80f21f902452200367a.pdf', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(27, '12', '2', '6', '05', '2025-10-14 19:17:45', 'Surat Pembimbing Workshop', 'Bandung', '2025-10-18', '351f416204f192ecc071f17addc2a881.pdf', '1,2', 'Surat Selesai', '', '', '14', 'SI/05/10/2025', '2025-10-16 21:11:20', '<p style=\"text-align: justify;\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam lobortis vehicula massa, ut pellentesque nisi consectetur sed. Aliquam at ipsum iaculis, pellentesque nulla quis, semper magna. Proin ultricies porttitor dolor, quis maximus nibh commodo ac. Mauris fermentum lorem lectus, nec vulputate sapien suscipit non. Nam volutpat, tortor ac ullamcorper elementum, massa tellus suscipit odio, in molestie magna lorem posuere sem. Maecenas purus libero, luctus egestas odio sed, porta malesuada dui. Aenean faucibus sodales pharetra. Cras vel ex vitae purus placerat scelerisque. Praesent ligula metus, pulvinar sed rhoncus vel, consequat ut arcu. Sed lobortis est et sem luctus, sit amet feugiat neque maximus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Phasellus vel lorem at ipsum tempus egestas. Fusce sodales elit at leo sodales, sit amet ullamcorper tellus pharetra. Duis quis enim fermentum, dictum velit pellentesque, mollis massa.</p>', '15', '1', '3', '14', '2025-10-16 21:23:52', 'ST dan SPD Pembimbing Workshop Dosen', '1', '5,9', 'Mohon dibuatkan ST dan SPD untuk pembimbing workshop dosen', 'Mohon dibuatkan ST dan SPD', 'Mohon dibuatkan ST dan SPD', NULL, 'Segera dibuatkan ST dan SPD untuk pembimbing workshop dosen', 'Dekan', 'Wadek 1', 'Wadek 2', NULL, 'Kabag TU', '3', '2025-10-16 21:46:10', 'Pt-14/Un.07/07/D/KP.01.1/ST/10/2025', 'Pt-14/Un.07/07/PPK/KP.01.1/SPD/10/2025', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', '24a55aa97ae91f9689fa8873b0fcb9f3.pdf', '99d0f298f6297787fa1f6d935402fc35.pdf', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(27, '12', '2', '6', '05', '2025-10-14 19:17:45', 'Surat Pembimbing Workshop', 'Bandung', '2025-10-18', '351f416204f192ecc071f17addc2a881.pdf', '1,2', 'Surat Selesai', '', '', '14', 'SI/05/10/2025', '2025-10-16 21:11:20', '<p style=\"text-align: justify;\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam lobortis vehicula massa, ut pellentesque nisi consectetur sed. Aliquam at ipsum iaculis, pellentesque nulla quis, semper magna. Proin ultricies porttitor dolor, quis maximus nibh commodo ac. Mauris fermentum lorem lectus, nec vulputate sapien suscipit non. Nam volutpat, tortor ac ullamcorper elementum, massa tellus suscipit odio, in molestie magna lorem posuere sem. Maecenas purus libero, luctus egestas odio sed, porta malesuada dui. Aenean faucibus sodales pharetra. Cras vel ex vitae purus placerat scelerisque. Praesent ligula metus, pulvinar sed rhoncus vel, consequat ut arcu. Sed lobortis est et sem luctus, sit amet feugiat neque maximus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Phasellus vel lorem at ipsum tempus egestas. Fusce sodales elit at leo sodales, sit amet ullamcorper tellus pharetra. Duis quis enim fermentum, dictum velit pellentesque, mollis massa.</p>', '15', '1', '3', '14', '2025-10-16 21:23:52', 'ST dan SPD Pembimbing Workshop Dosen', '1', '5,9', 'Mohon dibuatkan ST dan SPD untuk pembimbing workshop dosen', 'Mohon dibuatkan ST dan SPD', 'Mohon dibuatkan ST dan SPD', NULL, 'Segera dibuatkan ST dan SPD untuk pembimbing workshop dosen', 'Dekan', 'Wadek 1', 'Wadek 2', NULL, 'Kabag TU', '3', '2025-10-16 21:46:10', 'Pt-14/Un.07/07/D/KP.01.1/ST/10/2025', 'Pt-14/Un.07/07/PPK/KP.01.1/SPD/10/2025', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', '24a55aa97ae91f9689fa8873b0fcb9f3.pdf', '99d0f298f6297787fa1f6d935402fc35.pdf', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(28, '16', '1', '1', '07', '2025-10-24 12:50:33', 'Surat', NULL, NULL, 'ba43929d9b971b0ef9b399650c0627bd.pdf', '1,2', 'Surat Pengantar Selesai Dibuat Kaprodi', NULL, NULL, '16', 'BIO/07/10/2025', '2025-10-24 12:50:33', '<p>test</p>', '17', '1', NULL, NULL, NULL, NULL, '0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -415,7 +417,7 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id`, `id_jurusan`, `id_prodi`, `username`, `password`, `nama`, `nip`, `pangkat`, `golongan`, `jabatan`, `role`, `ttd`) VALUES
 (1, '', '', 'adminku', '$2a$12$h2h/jYX06iayuszUM64Rye4B0lcFU/cHrAtMDYuPDykayO20HLyUC', 'MyAdmin', '-', '-', '-', '', 'Admin', NULL),
-(2, '1', '1', 'pemohon', '$2a$12$FTMUrBm8E4X/JJsnDPPhaOkAgClzbeAp3cslPbmMVhzC2wKAZq0fy', 'Nirmala Fitria Firdhausi, S.Si., M.Si', '198506252011012010', 'Penata', 'III/c', 'Dosen', 'Dosen', NULL),
+(2, '1', '1', 'pemohon', '$2y$10$NBz7v.dOy7ZUm.YLPKhC..aut2u9lQAwWb033yHp/I/enN8bE9ZYa', 'Nirmala Fitria Firdhausi, S.Si., M.Si', '198506252011012010', 'Penata', 'III/c', 'Dosen', 'Dosen', NULL),
 (3, '', '', 'staf', '$2a$12$b5IsU3nk13chR8jtbdNW1uwBLc07YPR50ERlmjPbtAel/oDKRk/BS', 'Khusnul Inayah, S.Ag', '197709272009012008', 'Penata Tk.I', 'III/d', 'Staf', 'Staf', NULL),
 (4, '', '', 'dekan', '$2a$12$G2XlHqfFBH2V9WKmgBJA8.j9tMbBLuXVceQv1Z8oEEsbGkUJeO2YG', 'Dr. A. Saepul Hamdani, M.Pd', '196507312000031002', 'Pembina', 'IV/a', 'Dekan', 'Dekan', ''),
 (5, '', '', 'wadek', '$2a$12$Y48xtuRBaY4Ptat1w8BHDO7cMTomOUgot8kLKH1bvsCbA0ZGIR6Wy', 'Dr. Moh. Hafiyusholeh, M. Si', '198002042014031001', 'Penata Tk.I', 'III/d', 'Wadek 1', 'Wadek', NULL),
@@ -508,13 +510,13 @@ ALTER TABLE `prodi`
 -- AUTO_INCREMENT untuk tabel `status`
 --
 ALTER TABLE `status`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=161;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=162;
 
 --
 -- AUTO_INCREMENT untuk tabel `surat`
 --
 ALTER TABLE `surat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`

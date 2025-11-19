@@ -283,7 +283,7 @@
                                                 </td>
                                                 <td>
                                                     <div class="btn-group" role="group">
-                                                        <?php if ($kp['status'] == 'Diajukan Ke Prodi') : ?>
+                                                        <?php if ($kp['status'] == 'Diajukan Ke Prodi' || $kp['status'] == 'Ditolak Kaprodi') : ?>
                                                             <a href="<?= base_url('detailPengajuanKaprodi/' . $kp['id']); ?>" class="btn btn-success btn-sm" title="Detail Pengajuan">
                                                                 <i class="fas fa-fw fa-paper-plane"></i>
                                                             </a>

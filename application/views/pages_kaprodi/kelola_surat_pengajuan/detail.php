@@ -143,7 +143,7 @@
 
                                     <div class="footer">
                                         <div class="col-6 text-center">
-                                            <p>Mengertahui,<br>
+                                            <p>Mengetahui,<br>
                                                 Ketua Jurusan <?= $jurusan ?><br>
                                                 <?php if ($kelola_pengajuan['status'] != 'Surat Pengantar Selesai Dibuat Kaprodi' && $kelola_pengajuan['status'] != 'Ditolak Kajur') : ?>
                                                     <img src="<?= base_url('uploads/ttd/' . $ttd_kajur); ?>" alt="Ttd Kajur" height="100"><br>

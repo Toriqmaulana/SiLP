@@ -144,7 +144,7 @@
 
                                         <div class="footer">
                                             <div class="col-6 text-center">
-                                                <p>Mengertahui,<br>
+                                                <p>Mengetahui,<br>
                                                     Ketua Jurusan <?= $jurusan ?><br>
                                                     <?php if ($kelola_sm['status'] != 'Surat Pengantar Selesai Dibuat Kaprodi' && $kelola_sm['status'] != 'Ditolak Kajur') : ?>
                                                         <img src="<?= base_url('uploads/ttd/' . $ttd_kajur); ?>" alt="Ttd Kajur" height="100"><br>
@@ -214,6 +214,7 @@
                     <div class="form-group" id="alasan-group" style="display: none;">
                         <label for="alasan_kajur">Alasan Ditolak</label>
                         <input type="text" class="form-control" name="alasan_kajur" value="" autocomplete="off">
+                        <?= form_error('alasan_kajur'); ?>
                     </div>
                     <?php if ($kelola_sm['status'] == 'Ditolak Kajur') : ?>
                         <div class="form-group">
