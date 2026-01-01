@@ -31,9 +31,14 @@ class Kelola_surat_model extends CI_Model
                 $this->db->limit(1);
                 $last_pengajuan = $this->db->get('surat')->row();
 
-                $no_urut = $last_pengajuan->nomor_urut_pengajuan + 1;
-                $no_urut_format = str_pad($no_urut, 2, '0', STR_PAD_LEFT);
-                $last_no = $no_urut_format;
+                if ($last_pengajuan) {
+                    $no_urut = $last_pengajuan->nomor_urut_pengajuan + 1;
+                    $no_urut_format = str_pad($no_urut, 2, '0', STR_PAD_LEFT);
+                    $last_no = $no_urut_format;
+                } else {
+                    // Jika tidak ada hasil, tentukan nomor urut awal
+                    $last_no = '01';
+                }
             }
         }
 
@@ -129,9 +134,14 @@ class Kelola_surat_model extends CI_Model
                 $this->db->limit(1);
                 $last_pengajuan = $this->db->get('surat')->row();
 
-                $no_urut = $last_pengajuan->nomor_urut_pengajuan + 1;
-                $no_urut_format = str_pad($no_urut, 2, '0', STR_PAD_LEFT);
-                $last_no = $no_urut_format;
+                if ($last_pengajuan) {
+                    $no_urut = $last_pengajuan->nomor_urut_pengajuan + 1;
+                    $no_urut_format = str_pad($no_urut, 2, '0', STR_PAD_LEFT);
+                    $last_no = $no_urut_format;
+                } else {
+                    // Jika tidak ada hasil, tentukan nomor urut awal
+                    $last_no = '01';
+                }
             }
 
             $nomor_sm = $prodi->kode_prodi . '/' . $last_no . '/' . $bulan_sekarang . '/' . $tahun_sekarang;
@@ -235,8 +245,13 @@ class Kelola_surat_model extends CI_Model
                 $this->db->limit(1);
                 $last_pengajuan = $this->db->get('surat')->row();
 
-                $no_urut = $last_pengajuan->nomor_urut_pengajuan + 1;
-                $no_urut_format = str_pad($no_urut, 2, '0', STR_PAD_LEFT);
+                if ($last_pengajuan) {
+                    $no_urut = $last_pengajuan->nomor_urut_pengajuan + 1;
+                    $no_urut_format = str_pad($no_urut, 2, '0', STR_PAD_LEFT);
+                } else {
+                    // Jika tidak ada hasil, tentukan nomor urut awal
+                    $no_urut_format = '01';
+                }
             }
         }
 
@@ -324,8 +339,13 @@ class Kelola_surat_model extends CI_Model
                 $this->db->limit(1);
                 $last_pengajuan = $this->db->get('surat')->row();
 
-                $no_urut = $last_pengajuan->nomor_urut_pengajuan + 1;
-                $no_urut_format = str_pad($no_urut, 2, '0', STR_PAD_LEFT);
+                if ($last_pengajuan) {
+                    $no_urut = $last_pengajuan->nomor_urut_pengajuan + 1;
+                    $no_urut_format = str_pad($no_urut, 2, '0', STR_PAD_LEFT);
+                } else {
+                    // Jika tidak ada hasil, tentukan nomor urut awal
+                    $no_urut_format = '01';
+                }
             }
         }
 

@@ -19,9 +19,14 @@ class Kelola_disposisi_model extends CI_Model
             $this->db->limit(1);
             $last_pengajuan = $this->db->get('surat')->row();
 
-            $no_urut = $last_pengajuan->nomor_urut_disposisi + 1;
-            $no_urut_format = str_pad($no_urut, 2, '0', STR_PAD_LEFT);
-            $last_no = $no_urut_format;
+            if ($last_pengajuan) {
+                $no_urut = $last_pengajuan->nomor_urut_disposisi + 1;
+                $no_urut_format = str_pad($no_urut, 2, '0', STR_PAD_LEFT);
+                $last_no = $no_urut_format;
+            } else {
+                // Jika tidak ada hasil, tentukan nomor urut awal
+                $last_no = '01';
+            }
         }
 
         $data = [
